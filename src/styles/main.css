@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+:root {
+    background-image: linear-gradient(115deg, #004094 50%, #00f7ff);
+    font-family: 'Fira Sans', sans-serif;
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+div#app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
