@@ -1,10 +1,20 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
-import router from './router'
 import './styles/main.css'
 
-const app = createApp(App)
-
-app.use(router)
-
-app.mount('#app')
+export const createApp = ViteSSG(
+    App,
+    {
+        routes: [
+            {
+                path: '/',
+                component: await import('@views/HomeView.vue'),
+            },
+            {
+                path: '/:pathMatch(.*)*',
+                component: await import('@views/NotFoundView.vue'),
+            },
+        ],
+    },
+    (_modules) => {},
+)
