@@ -4,7 +4,10 @@ import { faGitAlt, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-ico
 </script>
 <template>
     <footer>
-        <p>Bastien LUBEN.</p>
+        <p>
+            Bastien LUBEN.
+            <a href="https://github.com/BloomyInDev/Portfolio" target="_blank">Licence AGPL v3</a>
+        </p>
         <div id="links">
             <a href="https://www.linkedin.com/in/bastien-luben/" target="_blank">
                 <FontAwesomeIcon :icon="faLinkedin" size="lg" />
@@ -23,6 +26,7 @@ footer {
     margin: 0;
     padding: 0 1rem;
     background-color: #00275a80;
+    color: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -39,5 +43,14 @@ footer > div#links {
 footer > div#links > a {
     color: #ffffff;
     text-decoration: none;
+    transition: all 250ms ease-in-out;
+}
+
+footer > div#links > a:hover {
+    color: #0099ff;
+}
+
+footer > p > a {
+    color: #ffffff;
 }
 </style>

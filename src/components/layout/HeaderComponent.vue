@@ -2,7 +2,6 @@
 import { RouterLink } from 'vue-router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faHouse, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
-import TooltipComponent from './TooltipComponent.vue'
 </script>
 
 <template>
@@ -10,14 +9,12 @@ import TooltipComponent from './TooltipComponent.vue'
         <h1>Bastien LUBEN</h1>
         <nav>
             <RouterLink to="/">
-                <TooltipComponent text="Acceuil">
-                    <FontAwesomeIcon :icon="faHouse" size="lg" />
-                </TooltipComponent>
+                <FontAwesomeIcon :icon="faHouse" size="lg" />
+                <!--<TooltipComponent text="Acceuil"> </TooltipComponent>-->
             </RouterLink>
             <RouterLink to="/about">
-                <TooltipComponent text="À propos">
-                    <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
-                </TooltipComponent>
+                <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
+                <!--<TooltipComponent text="À propos"> </TooltipComponent>-->
             </RouterLink>
         </nav>
     </header>
@@ -33,6 +30,7 @@ header {
 }
 
 header > h1 {
+    font-size: 2.25rem;
     margin: 0;
     padding: 0.5rem;
 }
@@ -49,5 +47,10 @@ header > nav {
 header > nav > a {
     color: white;
     text-decoration: none;
+    transition: all 250ms ease-in-out;
+}
+
+header > nav > a:hover {
+    color: #0099ff;
 }
 </style>
