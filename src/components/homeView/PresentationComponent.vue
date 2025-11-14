@@ -43,14 +43,22 @@ div#container > div#me {
 }
 
 div#presentation p {
-    font-size: x-large;
+    font-size: 1.75rem;
     margin: 0;
     text-align: center;
 }
 
 div#presentation > p:nth-child(2) {
-    font-size: xx-large;
+    font-size: 2.25rem;
     font-weight: bold;
     margin: 0.5rem 0;
+}
+
+@media (max-width: var(--phone-width)) {
+    div#me > img {
+        max-width: 12rem;
+        margin: auto;
+        animation: mover 2s infinite alternate ease-in-out;
+    }
 }
 </style>
