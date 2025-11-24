@@ -8,14 +8,14 @@ import { faHouse, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
     <header>
         <h1>Bastien LUBEN</h1>
         <nav>
-            <RouterLink to="/">
+            <RouterLink to="/" title="Acceuil">
                 <FontAwesomeIcon :icon="faHouse" size="lg" />
-                <!--<TooltipComponent text="Acceuil"> </TooltipComponent>-->
             </RouterLink>
-            <RouterLink to="/about">
-                <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
-                <!--<TooltipComponent text="À propos"> </TooltipComponent>-->
-            </RouterLink>
+            <!--
+                <RouterLink to="/about" title="À propos">
+                    <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
+                </RouterLink>
+            -->
         </nav>
     </header>
 </template>
