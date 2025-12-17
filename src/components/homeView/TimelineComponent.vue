@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import type { ITimeline } from '@/types/timeline'
-import { computed } from 'vue'
+import { RouterLink } from "vue-router"
+import type { ITimeline } from "@/types/timeline"
+import { computed } from "vue"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { faCalendar } from "@fortawesome/free-solid-svg-icons"
 
 const props = defineProps<{ items: ITimeline[] }>()
 const numberOfItems = computed(() => props.items.length)
@@ -21,6 +23,7 @@ const numberOfItems = computed(() => props.items.length)
             <div class="content">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.description }}</p>
+                <p><FontAwesomeIcon :icon="faCalendar" /> {{ item.dateToString }}</p>
             </div>
         </RouterLink>
     </div>
