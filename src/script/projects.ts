@@ -4,7 +4,7 @@ export type IProject = {
     id: string
     title: string
     subtitle: string
-    description: string
+    description: string | string[]
     projectUrl?: string
     images?: string[]
     knowledges: (TechnologiesEnum | MethodsEnum)[]
@@ -40,7 +40,7 @@ const unsortedProjects: IIncompleteProject[] = [
         subtitle: "Projet de démocratie participative - Projet d'études",
         description: [
             "Vox Populi est un projet de démocratie participative afin de mettre en pratique nos conaissances",
-        ].join("\n"),
+        ],
         knowledges: [
             TechnologiesEnum.PHP,
             TechnologiesEnum.CSS,
@@ -56,9 +56,11 @@ const unsortedProjects: IIncompleteProject[] = [
         title: "Nuit de l'Info 2025",
         subtitle: "Création d'un site de sensibilisation à la démarche NIRD",
         description: [
-            "Lors de la Nuit de l'Info 2025, nous avons créé un site web visant à sensibiliser les étudiants à la démarche NIRD (Numérique Inclusif, Responsable et Durable).",
+            "Lors de la Nuit de l'Info 2025, nous avons créé un site web visant à sensibiliser les étudiants pour la démarche NIRD (Numérique Inclusif, Responsable et Durable).",
             "Le site présente des informations clés sur l'importance de l'inclusion numérique, les pratiques responsables dans le développement technologique, et les initiatives durables dans le secteur numérique.",
-        ].join("\n"),
+            "Pendant cet évènement, nous avons travaillé en équipe pour concevoir, développer et déployer le site web en un temps limité, mettant en pratique nos compétences techniques et notre capacité à collaborer efficacement.",
+            "Ce projet m'a permis d'approfondir mes connaissances en développement web tout en travaillant sur un sujet qui m'interesse particulièrement.",
+        ],
         knowledges: [
             TechnologiesEnum.HTML,
             TechnologiesEnum.CSS,
@@ -78,6 +80,9 @@ export const projects = unsortedProjects
     .map((project) => ({
         ...project,
         id: project.title.toLowerCase().replace(/ /g, "-"),
+        description: Array.isArray(project.description)
+            ? project.description.join("\n\n")
+            : project.description,
     }))
     .sort((a, b) => {
         if (a.dates.start.getTime() === b.dates.start.getTime()) {
