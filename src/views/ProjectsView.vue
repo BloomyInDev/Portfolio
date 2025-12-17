@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { projects } from "@/script/projects"
 import type { ITimeline } from "@/types/timeline"
-import TimelineComponent from "@components/homeView/TimelineComponent.vue"
+import TimelineComponent from "@components/TimelineComponent.vue"
 
 const timeline = projects.map((project) => ({
     title: project.title,

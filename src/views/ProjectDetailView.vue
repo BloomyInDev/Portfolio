@@ -8,7 +8,7 @@ import {
     faArrowLeft,
     faCalendar,
 } from "@fortawesome/free-solid-svg-icons"
-import ButtonComponent from "@components/base/ButtonComponent.vue"
+import ButtonComponent from "@components/ButtonComponent.vue"
 import { computed } from "vue"
 
 const projectName = useRoute().params.projectName as string
