@@ -45,7 +45,7 @@ const numberOfItems = computed(() => props.items.length)
     grid-row: 1 / span v-bind(numberOfItems);
     width: 0.5rem;
     height: 95%;
-    content: '';
+    content: "";
     background-color: #ffffff;
     border-radius: 0.25rem;
     margin: 5%;
@@ -55,6 +55,7 @@ const numberOfItems = computed(() => props.items.length)
     display: flex;
     width: 100%;
     color: #ffffff;
+    text-decoration: none;
 }
 
 .timeline > .container.left {
@@ -73,5 +74,12 @@ const numberOfItems = computed(() => props.items.length)
 .timeline > .right {
     grid-column: 3;
     align-content: start;
+}
+
+.content {
+    background-color: #00275a80;
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 20rem;
 }
 </style>
