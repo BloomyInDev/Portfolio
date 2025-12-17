@@ -20,18 +20,20 @@ const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.date
 
 <template>
     <div>
-        <RouterLink to="/projects" id="back-to-projects" title="Retour aux projets">
-            <ButtonComponent
-                :proportional-paddings="false"
-                :unrounded-corners="{
-                    topLeft: true,
-                    bottomLeft: true,
-                    topRight: false,
-                    bottomRight: false,
-                }"
-                ><FontAwesomeIcon :icon="faArrowLeft"
-            /></ButtonComponent>
-        </RouterLink>
+        <div id="back-to-projects-container">
+            <RouterLink to="/projects" id="back-to-projects" title="Retour aux projets">
+                <ButtonComponent
+                    :proportional-paddings="false"
+                    :unrounded-corners="{
+                        topLeft: true,
+                        bottomLeft: true,
+                        topRight: false,
+                        bottomRight: false,
+                    }"
+                    ><FontAwesomeIcon :icon="faArrowLeft"
+                /></ButtonComponent>
+            </RouterLink>
+        </div>
         <div id="content">
             <p v-if="projectInfo === null">Ce projet n'existe pas.</p>
             <div v-else id="project">
@@ -57,11 +59,21 @@ const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.date
 </template>
 
 <style scoped>
+#back-to-projects-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 #back-to-projects {
     margin: 0.5rem 0;
     display: inline-block;
-    width: fit-content;
+    width: 2.5rem;
     text-decoration: none;
+    transition: width 0.25s ease-in-out;
+}
+
+#back-to-projects:hover {
+    width: 4rem;
 }
 
 div#content {
@@ -72,7 +84,7 @@ div#content {
     max-width: 75rem;
     margin: 2rem 0 0 0;
     padding: 20px;
-    background-color: rgba(52, 52, 52, 0.4);
+    background-color: #00275a80;
     border-radius: 2rem;
 }
 
