@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import PresentationComponent from "@components/homeView/PresentationComponent.vue"
-import ButtonComponent from "@components/base/ButtonComponent.vue"
+import PresentationComponent from "@components/PresentationComponent.vue"
+import ButtonComponent from "@components/ButtonComponent.vue"
 </script>
 
 <template>

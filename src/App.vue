@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import FooterComponent from "@components/layout/FooterComponent.vue"
-import HeaderComponent from "@components/layout/HeaderComponent.vue"
+import FooterComponent from "@components/FooterComponent.vue"
+import HeaderComponent from "@components/HeaderComponent.vue"
 import { RouterView, useRoute } from "vue-router"
 
 const route = useRoute()
