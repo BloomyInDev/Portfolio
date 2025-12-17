@@ -5,7 +5,7 @@ import ButtonComponent from '@components/base/ButtonComponent.vue'
 <template>
     <section>
         <h2>404 - Page non trouvée</h2>
-        <h3>Tu t'est perdu, viens retourne sur la bonne route</h3>
+        <h3>Tu es perdu, viens retourne sur la bonne route</h3>
         <img id="compass" src="@/assets/compass.gif" alt="Boussole Minecraft" />
         <p>
             <ButtonComponent>
