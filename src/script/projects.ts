@@ -1,5 +1,11 @@
 import { MethodsEnum, TechnologiesEnum } from "./index.ts"
 
+export type IProjectDate = {
+    start: Date
+    end?: Date
+    toString: () => string
+}
+
 export type IProject = {
     id: string
     title: string
@@ -8,13 +14,12 @@ export type IProject = {
     projectUrl?: string
     images?: string[]
     knowledges: (TechnologiesEnum | MethodsEnum)[]
-    dates: {
-        start: Date
-        end?: Date
-    }
+    dates: IProjectDate
 }
 
-export type IIncompleteProject = Omit<IProject, "id">
+export type IIncompleteProject = Omit<IProject, "id" | "dates"> & {
+    dates: Omit<IProjectDate, "toString">
+}
 
 export enum MonthEnum {
     January,
@@ -33,6 +38,13 @@ export enum MonthEnum {
 
 const createDate = (options: { day?: number; month: MonthEnum; year: number }) =>
     new Date(options.year, options.month, options.day ?? 1)
+
+export const dateToDateString = (date: Date): string =>
+    date.toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+    })
 
 const unsortedProjects: IIncompleteProject[] = [
     {
@@ -83,6 +95,13 @@ export const projects = unsortedProjects
         description: Array.isArray(project.description)
             ? project.description.join("\n\n")
             : project.description,
+        dates: {
+            ...project.dates,
+            toString: () =>
+                project.dates.end === undefined
+                    ? `Depuis le ${dateToDateString(project.dates.start)}`
+                    : `Du ${dateToDateString(project.dates.start)} au ${dateToDateString(project.dates.end)}`,
+        },
     }))
     .sort((a, b) => {
         if (a.dates.start.getTime() === b.dates.start.getTime()) {

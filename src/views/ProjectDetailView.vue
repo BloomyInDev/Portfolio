@@ -3,12 +3,19 @@ import { projects } from "@/script/projects"
 import { useRoute } from "vue-router"
 import VueMarkdown from "vue-markdown-render"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
-import { faArrowUpRightFromSquare, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import {
+    faArrowUpRightFromSquare,
+    faArrowLeft,
+    faCalendar,
+} from "@fortawesome/free-solid-svg-icons"
 import ButtonComponent from "@components/base/ButtonComponent.vue"
+import { computed } from "vue"
 
 const projectName = useRoute().params.projectName as string
 
 const projectInfo = projects.find((project) => project.id === projectName) || null
+
+const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.dates.toString()))
 </script>
 
 <template>
@@ -42,6 +49,7 @@ const projectInfo = projects.find((project) => project.id === projectName) || nu
                 ></a>
                 <h2>{{ projectInfo.title }}</h2>
                 <h3>{{ projectInfo.subtitle }}</h3>
+                <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
                 <VueMarkdown :source="projectInfo.description" />
             </div>
         </div>
