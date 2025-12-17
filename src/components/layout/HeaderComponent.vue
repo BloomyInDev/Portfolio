@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faHouse, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { RouterLink } from "vue-router"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { faHouse, faCircleInfo, faWrench } from "@fortawesome/free-solid-svg-icons"
 </script>
 
 <template>
@@ -11,11 +11,12 @@ import { faHouse, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
             <RouterLink to="/" title="Acceuil">
                 <FontAwesomeIcon :icon="faHouse" size="lg" />
             </RouterLink>
-            <!--
-                <RouterLink to="/about" title="À propos">
-                    <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
-                </RouterLink>
-            -->
+            <RouterLink to="/projects" title="Projets">
+                <FontAwesomeIcon :icon="faWrench" size="lg" />
+            </RouterLink>
+            <RouterLink to="/about" title="À propos">
+                <FontAwesomeIcon :icon="faCircleInfo" size="lg" />
+            </RouterLink>
         </nav>
     </header>
 </template>
