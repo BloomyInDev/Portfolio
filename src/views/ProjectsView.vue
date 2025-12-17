@@ -7,16 +7,22 @@ const timeline = projects.map((project) => ({
     title: project.title,
     description: project.subtitle,
     url: `/project/${project.id}`,
+    dateToString: project.dates.toString(),
 })) satisfies ITimeline[]
 </script>
 
 <template>
-    <div id="content"><TimelineComponent :items="timeline"></TimelineComponent></div>
+    <div id="content">
+        <h2>Mes différents projets</h2>
+        <TimelineComponent :items="timeline"></TimelineComponent>
+    </div>
 </template>
 
 <style scoped>
 #content {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 </style>
