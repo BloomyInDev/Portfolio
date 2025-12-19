@@ -9,7 +9,10 @@
                 >contact+portfolio@bastienluben.dev</a
             >
         </p>
-        <p>Vous pouvez également obtenir un lien temporaire pour mon portfolio ici.</p>
+        <p>
+            Vous pouvez également obtenir un lien pour mon portfolio
+            <a href="/cvWebBastienLuben.pdf" target="_blank">ici</a>.
+        </p>
     </section>
 </template>
 
