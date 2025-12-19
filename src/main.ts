@@ -24,8 +24,12 @@ export const createApp = ViteSSG(
                 component: () => import("@views/ProjectDetailView.vue"),
             },
             {
-                path: "/:pathMatch(.*)*",
+                path: "/404",
                 component: () => import("@views/NotFoundView.vue"),
+            },
+            {
+                path: "/:pathMatch(.*)*",
+                redirect: "/404",
             },
         ],
     },
