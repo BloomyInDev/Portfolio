@@ -1,24 +1,37 @@
 import { MethodsEnum, TechnologiesEnum } from "./index.ts"
 
 export type IProjectDate = {
+    /** Start of the project */
     start: Date
+    /** End of the project */
     end?: Date
     toString: () => string
 }
 
+export type IProjectImages = { title?: string; url: string }[]
+
 export type IProject = {
+    /** Slugified title used as a unique identifier */
     id: string
+    /** Project title */
     title: string
+    /** Project subtitle */
     subtitle: string
+    /** Project description */
     description: string | string[]
+    /** Url to the project */
     projectUrl?: string
-    images?: string[]
+    /** Images associated with the project */
+    images: IProjectImages
+    /** Knowledges associated with the project */
     knowledges: (TechnologiesEnum | MethodsEnum)[]
+    /** Project dates */
     dates: IProjectDate
 }
 
-export type IIncompleteProject = Omit<IProject, "id" | "dates"> & {
+export type IIncompleteProject = Omit<IProject, "id" | "dates" | "images"> & {
     dates: Omit<IProjectDate, "toString">
+    images?: IProjectImages
 }
 
 export enum MonthEnum {
@@ -106,6 +119,7 @@ export const projects = unsortedProjects
                     ? `Depuis le ${dateToDateString(project.dates.start)}`
                     : `Du ${dateToDateString(project.dates.start)} au ${dateToDateString(project.dates.end)}`,
         },
+        images: project.images ?? [],
     }))
     .sort((a, b) => {
         if (a.dates.start.getTime() === b.dates.start.getTime()) {
