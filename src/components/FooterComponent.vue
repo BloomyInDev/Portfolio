@@ -58,4 +58,10 @@ footer > div#links > a:hover {
 footer > p > a {
     color: #ffffff;
 }
+
+@media (max-width: 600px) {
+    footer > div#links {
+        gap: 0.5rem;
+    }
+}
 </style>
