@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { faGitAlt, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 </script>
 <template>
     <footer>
@@ -9,6 +10,9 @@ import { faGitAlt, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-ico
             <a href="https://github.com/BloomyInDev/Portfolio" target="_blank">Licence AGPL v3</a>
         </p>
         <div id="links">
+            <a href="mailto:contact+portfolio@bastienluben.dev">
+                <FontAwesomeIcon :icon="faEnvelope" size="lg" />
+            </a>
             <a href="https://www.linkedin.com/in/bastien-luben/" target="_blank">
                 <FontAwesomeIcon :icon="faLinkedin" size="lg" />
             </a>
