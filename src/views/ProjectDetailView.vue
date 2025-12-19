@@ -9,13 +9,33 @@ import {
     faCalendar,
 } from "@fortawesome/free-solid-svg-icons"
 import ButtonComponent from "@components/ButtonComponent.vue"
+import TechnologiesComponent from "@components/TechnologiesComponent.vue"
+import CarousselComponent from "@components/CarousselComponent.vue"
+
 import { computed } from "vue"
+import { MethodsEnum, TechnologiesEnum } from "@/script"
 
 const projectName = useRoute().params.projectName as string
 
 const projectInfo = projects.find((project) => project.id === projectName) || null
 
 const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.dates.toString()))
+const projectTechnologies = computed<TechnologiesEnum[]>(() =>
+    projectInfo === null
+        ? []
+        : projectInfo.knowledges.filter((t): t is TechnologiesEnum =>
+              Object.values(TechnologiesEnum).includes(t as TechnologiesEnum),
+          ),
+)
+const projectMethods = computed<string>(() =>
+    projectInfo === null
+        ? "Aucune méthode spécifique n'a été utilisée."
+        : projectInfo.knowledges
+              .filter((t): t is MethodsEnum =>
+                  Object.values(MethodsEnum).includes(t as MethodsEnum),
+              )
+              .join(", "),
+)
 </script>
 
 <template>
@@ -51,8 +71,24 @@ const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.date
                 ></a>
                 <h2>{{ projectInfo.title }}</h2>
                 <h3>{{ projectInfo.subtitle }}</h3>
+                <div id="technologies-list">
+                    <h3>Technologies</h3>
+                    <TechnologiesComponent
+                        v-for="(tech, index) in projectTechnologies"
+                        :key="index"
+                        :technology="tech"
+                    />
+                </div>
+                <div id="methods-list">
+                    <h3>Méthodes</h3>
+                    <p>{{ projectMethods }}</p>
+                </div>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
                 <VueMarkdown :source="projectInfo.description" />
+                <CarousselComponent
+                    v-if="projectInfo.images && projectInfo.images.length > 0"
+                    :images="projectInfo.images"
+                />
             </div>
         </div>
     </div>
@@ -99,5 +135,13 @@ div#content {
 
 #project > #project-link {
     float: right;
+}
+
+#technologies-list,
+#methods-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
 }
 </style>
