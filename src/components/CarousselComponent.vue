@@ -94,9 +94,6 @@ onMounted(() => {
 
 .carousel-item img {
     border-radius: 1rem;
-}
-
-.carousel-item img {
     width: 100%;
     display: block;
     object-fit: cover;
