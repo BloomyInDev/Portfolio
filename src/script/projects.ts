@@ -91,7 +91,11 @@ const unsortedProjects: IIncompleteProject[] = [
 export const projects = unsortedProjects
     .map((project) => ({
         ...project,
-        id: project.title.toLowerCase().replace(/ /g, "-"),
+        id: project.title
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[^a-zA-Z0-9 -]/g, "") // Remove everything that is not a letter, number, space or dash
+            .replace(/ /g, "-"), // Replace spaces with dashes
         description: Array.isArray(project.description)
             ? project.description.join("\n\n")
             : project.description,
