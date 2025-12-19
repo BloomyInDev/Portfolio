@@ -1,28 +1,32 @@
 export enum TechnologiesEnum {
     // Web
-    HTML = "html",
-    CSS = "css",
-    JAVASCRIPT = "js",
-    TYPESCRIPT = "ts",
-    PHP = "php",
-    VUEJS = "vue.js",
+    HTML = "HTML",
+    CSS = "CSS",
+    JAVASCRIPT = "Javascript",
+    TYPESCRIPT = "Typescript",
+    PHP = "PHP",
+    VUEJS = "Vue.js",
 
     // Langages haut niveau
-    JAVA = "java",
-    PYTHON = "python",
-    GOLANG = "go",
+    JAVA = "Java",
+    JAVAFX = "JavaFX", // Extension de Java pour les interfaces graphiques
+    PYTHON = "Python",
+    GOLANG = "Golang",
 
     // Langages bas niveau
-    C = "c",
-
+    C = "C",
     // Langages de base de données
-    SQL = "sql",
-    PLSQL = "plsql",
+    SQL = "SQL",
+    PLSQL = "PLSQL",
 
     // Coordination
-    GIT = "git",
+    GIT = "Git",
+    GITHUB = "Github",
+    DOCKER = "Docker",
 }
 
 export enum MethodsEnum {
-    AGILE = "agile",
+    AGILE = "Agile",
+    OOP = "OOP",
+    UML = "UML",
 }
