@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faGitAlt, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { faGitAlt, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 </script>
 <template>
     <footer>
@@ -24,6 +24,7 @@ import { faGitAlt, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-ico
 <style scoped>
 footer {
     margin: 0;
+    margin-top: 1rem;
     padding: 0 1rem;
     background-color: #00275a80;
     color: #ffffff;
