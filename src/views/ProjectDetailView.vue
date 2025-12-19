@@ -86,8 +86,15 @@ const projectMethods = computed<string>(() =>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
                 <VueMarkdown :source="projectInfo.description" />
                 <CarousselComponent
-                    v-if="projectInfo.images && projectInfo.images.length > 0"
+                    v-if="projectInfo.images && projectInfo.images.length > 1"
                     :images="projectInfo.images"
+                />
+                <img
+                    v-else-if="projectInfo.images.length === 1"
+                    :src="projectInfo.images[0]?.url"
+                    :alt="projectInfo.images[0]?.title"
+                    :title="projectInfo.images[0]?.title"
+                    id="project-image"
                 />
             </div>
         </div>
@@ -143,5 +150,12 @@ div#content {
     flex-wrap: wrap;
     align-items: center;
     gap: 0.25rem;
+}
+
+#project-image {
+    border-radius: 1rem;
+    width: 100%;
+    display: block;
+    object-fit: cover;
 }
 </style>
