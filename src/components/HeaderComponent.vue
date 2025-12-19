@@ -54,4 +54,10 @@ header > nav > a {
 header > nav > a:hover {
     color: #0099ff;
 }
+
+@media (max-width: 600px) {
+    header > h1 {
+        font-size: 1.5rem;
+    }
+}
 </style>
