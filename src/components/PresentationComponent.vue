@@ -22,7 +22,7 @@ div#me {
 }
 
 div#me > img {
-    content: url('@assets/me.png');
+    content: url("@assets/me.png");
     border-radius: 50%;
     max-width: 24rem;
     margin: auto;
@@ -54,11 +54,21 @@ div#presentation > p:nth-child(2) {
     margin: 0.5rem 0;
 }
 
-@media (max-width: var(--phone-width)) {
+@media (max-width: 600px) {
     div#me > img {
         max-width: 12rem;
         margin: auto;
         animation: mover 2s infinite alternate ease-in-out;
+    }
+}
+
+@media (max-width: 400px) {
+    div#container {
+        flex-direction: column;
+    }
+
+    div#presentation {
+        margin-top: 1rem;
     }
 }
 </style>
