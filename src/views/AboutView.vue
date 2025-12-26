@@ -10,7 +10,7 @@
             >
         </p>
         <p>
-            Vous pouvez également obtenir un lien pour mon portfolio
+            Vous pouvez également obtenir un lien pour mon CV
             <a href="/cvWebBastienLuben.pdf" target="_blank">ici</a>.
         </p>
     </section>
