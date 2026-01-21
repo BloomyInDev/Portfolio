@@ -2,6 +2,7 @@
 import { ViteSSG } from "vite-ssg"
 import App from "./App.vue"
 import "./styles/main.css"
+import type { CustomRouteMetadata } from "./types"
 
 export const createApp = ViteSSG(
     App,
@@ -10,22 +11,57 @@ export const createApp = ViteSSG(
             {
                 path: "/",
                 component: () => import("@views/HomeView.vue"),
+                meta: {
+                    title: { default: true },
+                    description: { default: true },
+                } satisfies CustomRouteMetadata,
             },
             {
                 path: "/about",
                 component: () => import("@views/AboutView.vue"),
+                meta: {
+                    title: { default: false, composed: false, content: "À propos" },
+                    description: { default: true },
+                } satisfies CustomRouteMetadata,
             },
             {
                 path: "/projects",
                 component: () => import("@views/ProjectsView.vue"),
+                meta: {
+                    title: { default: false, composed: false, content: "Projets" },
+                    description: {
+                        default: false,
+                        composed: false,
+                        content:
+                            "Découvrez les projets de Bastien Luben, développeur passionné.",
+                    },
+                } satisfies CustomRouteMetadata,
             },
             {
                 path: "/project/:projectName",
                 component: () => import("@views/ProjectDetailView.vue"),
+                meta: {
+                    title: {
+                        default: false,
+                        composed: true,
+                        content: (args: unknown = {}) => {
+                            const params = args as { projectName: string }
+                            return `Projet "${params.projectName}"`
+                        },
+                    },
+                    description: { default: false, composed: true, content: (args: unknown = {}) => {
+                        const params = args as { projectDetails: string }
+                        return params.projectDetails
+                    } },
+                } satisfies CustomRouteMetadata,
             },
             {
                 path: "/404",
                 component: () => import("@views/NotFoundView.vue"),
+                meta: {
+                    title: { default: false, composed: false, content: "Page non trouvée" },
+                    description: { default: true },
+                } satisfies CustomRouteMetadata,
             },
             {
                 path: "/:pathMatch(.*)*",

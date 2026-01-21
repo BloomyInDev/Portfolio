@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router"
 import ButtonComponent from "@components/ButtonComponent.vue"
+import { usePageHead } from "@/script/routing";
+
+usePageHead()
 </script>
+
 <template>
     <section>
         <h2>404 - Page non trouvée</h2>

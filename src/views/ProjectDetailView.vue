@@ -14,6 +14,7 @@ import CarousselComponent from "@components/CarousselComponent.vue"
 
 import { computed } from "vue"
 import { MethodsEnum, TechnologiesEnum } from "@/script"
+import { usePageHead } from "@/script/routing"
 
 const projectName = useRoute().params.projectName as string
 
@@ -36,6 +37,11 @@ const projectMethods = computed<string>(() =>
               )
               .join(", "),
 )
+
+usePageHead({
+    projectName: projectInfo ? projectInfo.title : "Projet inconnu",
+    projectDetails: projectInfo ? projectInfo.subtitle : "Ce projet n'existe pas.",
+})
 </script>
 
 <template>
