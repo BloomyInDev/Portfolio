@@ -14,7 +14,7 @@ export const createApp = ViteSSG(
                 meta: {
                     title: { default: true },
                     description: { default: true },
-                    dontPregenerate: false
+                    dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
             },
             {
@@ -23,7 +23,7 @@ export const createApp = ViteSSG(
                 meta: {
                     title: { default: false, composed: false, content: "À propos" },
                     description: { default: true },
-                    dontPregenerate: false
+                    dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
             },
             {
@@ -34,10 +34,9 @@ export const createApp = ViteSSG(
                     description: {
                         default: false,
                         composed: false,
-                        content:
-                            "Découvrez les projets de Bastien Luben, développeur passionné.",
+                        content: "Découvrez les projets de Bastien Luben, développeur passionné.",
                     },
-                    dontPregenerate: false
+                    dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
             },
             {
@@ -53,11 +52,15 @@ export const createApp = ViteSSG(
                             return `Projet "${params.projectName}"`
                         },
                     },
-                    description: { default: false, composed: true, content: (args: unknown = {}) => {
-                        const params = args as { projectDetails: string }
-                        return params.projectDetails
-                    } },
-                    dontPregenerate: false
+                    description: {
+                        default: false,
+                        composed: true,
+                        content: (args: unknown = {}) => {
+                            const params = args as { projectDetails: string }
+                            return params.projectDetails
+                        },
+                    },
+                    dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
             },
             {
@@ -66,18 +69,18 @@ export const createApp = ViteSSG(
                 meta: {
                     title: { default: false, composed: false, content: "Page non trouvée" },
                     description: { default: true },
-                    dontPregenerate: false
+                    dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
             },
             {
                 path: "/:pathMatch(.*)*",
                 redirect: "/404",
                 meta: {
-                    dontPregenerate: true
-                } satisfies Pick<CustomRouteMetadata, 'dontPregenerate'>,
+                    dontPregenerate: true,
+                } satisfies Pick<CustomRouteMetadata, "dontPregenerate">,
             },
         ],
     },
     (_modules) => {},
-    { }
+    {},
 )

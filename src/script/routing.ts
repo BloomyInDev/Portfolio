@@ -5,7 +5,7 @@ import type { CustomRouteMetadata } from "@/types"
 
 const DEFAULTS = {
     title: "Bastien Luben",
-    description: "Portfolio de Bastien Luben - Développeur web",
+    description: "Portfolio de Bastien Luben - Développeur",
 }
 
 export function usePageHead(args: unknown = {}) {
