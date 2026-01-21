@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { projects } from "@/script/projects"
-import { useRoute } from "vue-router"
-import VueMarkdown from "vue-markdown-render"
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { MethodsEnum, projects, TechnologiesEnum } from "@/script/projects"
+import { usePageHead } from "@/script/routing"
+import ButtonComponent from "@components/ButtonComponent.vue"
+import CarousselComponent from "@components/CarousselComponent.vue"
+import TechnologiesComponent from "@components/TechnologiesComponent.vue"
 import {
-    faArrowUpRightFromSquare,
     faArrowLeft,
+    faArrowUpRightFromSquare,
     faCalendar,
 } from "@fortawesome/free-solid-svg-icons"
-import ButtonComponent from "@components/ButtonComponent.vue"
-import TechnologiesComponent from "@components/TechnologiesComponent.vue"
-import CarousselComponent from "@components/CarousselComponent.vue"
-
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { computed } from "vue"
-import { MethodsEnum, TechnologiesEnum } from "@/script"
-import { usePageHead } from "@/script/routing"
+import VueMarkdown from "vue-markdown-render"
+import { useRoute } from "vue-router"
 
 const projectName = useRoute().params.projectName as string
 

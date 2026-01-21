@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TechnologiesEnum } from "@/script"
+import { TechnologiesEnum } from "@/script/projects"
 import { computed } from "vue"
 
 const props = defineProps<{
