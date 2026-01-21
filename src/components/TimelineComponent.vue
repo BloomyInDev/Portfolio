@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router"
-import type { ITimeline } from "@/types/timeline"
+import type { ITimeline } from "@/types"
 import { computed } from "vue"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { faCalendar } from "@fortawesome/free-solid-svg-icons"
