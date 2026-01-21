@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { usePageHead } from "@/script/routing"
+
+usePageHead()
+</script>
 
 <template>
     <section>
