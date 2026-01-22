@@ -193,6 +193,7 @@ const unsortedProjects: IIncompleteProject[] = [
             "Ce projet m'a permis de mettre en pratique mes compétences en programmation orientée objet en me basant sur le diagramme de classe fourni, tout en approfondissant ma compréhension des concepts fondamentaux de la programmation Java.",
             "En travaillant sur ce projet, j'ai acquis une expérience précieuse dans la conception et le développement d'une application complexe, ainsi que dans la collaboration avec d'autres membres de l'équipe pour atteindre nos objectifs communs.",
             "Ce projet m'a également permis de comprendre comment implémenter des interfaces Homme <-> Machine en utilisant JavaFX pour créer une expérience utilisateur interactive et engageante.",
+            "J'ai travaillé sur ce projet avec Natan Cantié.",
         ],
         knowledges: [
             TechnologiesEnum.JAVA,
@@ -226,6 +227,14 @@ const unsortedProjects: IIncompleteProject[] = [
             "Ce projet, un peu trop ambitieux pour le temps imparti, notament sur un aspect en 3 dimensions, m'ont montré la difficulté de créer de A à Z un jeu vidéo complet.",
             "Le jeu développé lors de cet événement est intitulé 'The Symphony of Stars'. Il s'agit d'un jeu d'exploration spatiale où les joueurs incarnent un voyageur traversant l'espace afin de retrouver des morceaux de mélodies dispersées à travers les étoiles.",
             "Le jeu rendu au final était jouable, mais n'a pas pu être finalisé à cause du temps imparti. Cependant, cette expérience m'a permis d'apprendre énormément sur le développement de jeux vidéo, la gestion du temps et la collaboration en équipe.",
+            "J'ai réalisé ce concours entre amis avec",
+            [
+                "[Clément Dubois](https://rybois-dev.github.io/portfolio/src/)",
+                "[Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/)",
+                "[Jordi Rocafort](https://jordi-rocafort.fr/portfolio/)",
+            ]
+                .map((name) => `- ${name}`)
+                .join("\n"),
         ],
         knowledges: [TechnologiesEnum.JAVA, TechnologiesEnum.GIT, MethodsEnum.OOP],
         dates: {
