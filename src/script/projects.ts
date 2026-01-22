@@ -33,9 +33,9 @@ export enum MethodsEnum {
 
 export type IProjectDate = {
     /** Start of the project */
-    start: Date
+    start: ICustomDate
     /** End of the project */
-    end?: Date
+    end?: ICustomDate
     toString: () => string
 }
 
@@ -65,6 +65,11 @@ export type IIncompleteProject = Omit<IProject, "id" | "dates" | "images"> & {
     images?: IProjectImages
 }
 
+export type ICustomDate = {
+    definedDay: boolean
+    date: Date
+}
+
 export enum MonthEnum {
     January,
     February,
@@ -80,12 +85,14 @@ export enum MonthEnum {
     December,
 }
 
-const createDate = (options: { day?: number; month: MonthEnum; year: number }) =>
-    new Date(options.year, options.month, options.day ?? 1)
+const createDate = (options: { day?: number; month: MonthEnum; year: number }) => ({
+    definedDay: options.day !== undefined,
+    date: new Date(options.year, options.month, options.day ?? 1),
+})
 
-export const dateToDateString = (date: Date): string =>
-    date.toLocaleDateString("fr-FR", {
-        day: "2-digit",
+export const dateToDateString = (date: ICustomDate): string =>
+    date.date.toLocaleDateString("fr-FR", {
+        day: date.definedDay ? "2-digit" : undefined,
         month: "long",
         year: "numeric",
     })
@@ -232,17 +239,24 @@ export const projects = unsortedProjects
             : project.description,
         dates: {
             ...project.dates,
-            toString: () =>
-                project.dates.end === undefined
-                    ? `Depuis le ${dateToDateString(project.dates.start)}`
-                    : `Du ${dateToDateString(project.dates.start)} au ${dateToDateString(project.dates.end)}`,
+            toString: () => {
+                if (project.dates.end === undefined) {
+                    return `Depuis ${project.dates.start.definedDay ? "le" : ""} ${dateToDateString(project.dates.start)}`
+                } else if (
+                    project.dates.end.date.getMonth() === project.dates.start.date.getMonth()
+                ) {
+                    return `Du ${project.dates.start.date.toLocaleDateString("fr-FR", { day: "2-digit" })} ${project.dates.end.definedDay ? "au" : "à"} ${dateToDateString(project.dates.end)}`
+                } else {
+                    return `${project.dates.start.definedDay ? "Du" : "De"} ${dateToDateString(project.dates.start)} ${project.dates.end.definedDay ? "au" : "à"} ${dateToDateString(project.dates.end)}`
+                }
+            },
         },
         images: project.images ?? [],
     }))
     .sort((a, b) => {
-        if (a.dates.start.getTime() === b.dates.start.getTime()) {
+        if (a.dates.start.date.getTime() === b.dates.start.date.getTime()) {
             if (a.dates.end && b.dates.end) {
-                return b.dates.end.getTime() - a.dates.end.getTime()
+                return b.dates.end.date.getTime() - a.dates.end.date.getTime()
             }
             if (a.dates.end) {
                 return -1
@@ -252,5 +266,5 @@ export const projects = unsortedProjects
             }
             return 0
         }
-        return b.dates.start.getTime() - a.dates.start.getTime()
+        return b.dates.start.date.getTime() - a.dates.start.date.getTime()
     })
