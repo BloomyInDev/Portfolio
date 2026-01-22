@@ -113,6 +113,7 @@ const unsortedProjects: IIncompleteProject[] = [
                 "- Bulma pour le design du site.",
                 "- Gitlab et Trello pour le contrôle de version et la collaboration en équipe.",
             ].join("\n"),
+            "Je remercie mes coéquipiers [Clément Dubois](https://rybois-dev.github.io/portfolio/src/), [Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/) et [Raphaël Fouqué]() pour ce travail de groupe réussi.",
         ],
         knowledges: [
             TechnologiesEnum.PHP,
@@ -145,6 +146,7 @@ const unsortedProjects: IIncompleteProject[] = [
         ],
         dates: {
             start: createDate({ month: MonthEnum.September, year: 2025 }),
+            end: createDate({ month: MonthEnum.January, year: 2026 }),
         },
     },
     {
@@ -156,6 +158,15 @@ const unsortedProjects: IIncompleteProject[] = [
             "Pendant cet évènement, nous avons travaillé en équipe pour concevoir, développer et déployer le site web en un temps limité, mettant en pratique nos compétences techniques et notre capacité à collaborer efficacement.",
             "Ce projet m'a permis d'approfondir mes connaissances en développement web tout en travaillant sur un sujet qui m'interesse particulièrement.",
             "J'ai également eu le plaisir de réaliser entièrement le mini-jeu Snake intégré au site, ce qui a ajouté une dimension interactive et ludique à notre projet de sensibilisation tout en remplissant un des nombreux défis disponibles lors de la nuit.",
+            "J'ai travaillé aux côtés de plusieurs amis pour réaliser ce projet. Ces personnes sont",
+            [
+                "[Clément Dubois](https://rybois-dev.github.io/portfolio/src/)",
+                "[Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/)",
+                "Vincent Quitin",
+                "Pierre-Loup Lavilledieu",
+            ]
+                .map((name) => `- ${name}`)
+                .join("\n"),
         ],
         knowledges: [
             TechnologiesEnum.HTML,
