@@ -7,6 +7,11 @@ import vueDevTools from "vite-plugin-vue-devtools"
 
 import { projects } from "./src/script/projects"
 import type { CustomRouteMetadata } from "./src/types"
+import type { RouteRecordRaw } from "vue-router"
+
+import * as child from "child_process"
+
+process.env.VITE_GIT_COMMIT_HASH = child.execSync("git rev-parse --short HEAD").toString()
 
 // https://vite.dev/config/
 export default {
@@ -20,8 +25,8 @@ export default {
         },
     },
     ssgOptions: {
-        includedRoutes(_paths, routes) {
-            return routes.flatMap((route) => {
+        includedRoutes: (_paths, routes: Readonly<RouteRecordRaw[]>) => {
+            return routes.flatMap((route: RouteRecordRaw) => {
                 return (route.meta as CustomRouteMetadata).dontPregenerate
                     ? []
                     : route.name == "project-detail"

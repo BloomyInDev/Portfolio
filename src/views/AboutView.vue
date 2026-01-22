@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { usePageHead } from "@/script/routing"
+import { computed } from "vue"
+
+const hash = computed(() => import.meta.env.VITE_GIT_COMMIT_HASH)
+const commitUrl = computed(() => `https://github.com/BloomyInDev/Portfolio/commit/${hash.value}`)
 
 usePageHead()
 </script>
@@ -16,6 +20,12 @@ usePageHead()
         <p>
             Vous pouvez également obtenir un lien pour mon CV
             <a href="/cvWebBastienLuben.pdf" target="_blank">ici</a>.
+        </p>
+        <p>Ce site a été développé par Bastien LUBEN en utilisant Vite et Vue.js.</p>
+        <p>
+            Le code source est disponible sur
+            <a href="https://github.com/BloomyInDev/Portfolio" target="_blank">GitHub</a>. Hash de
+            commit: <a :href="commitUrl">{{ hash }}</a>
         </p>
     </section>
 </template>
