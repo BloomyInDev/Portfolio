@@ -8,6 +8,10 @@ const DEFAULTS = {
     description: "Portfolio de Bastien Luben - Développeur",
 }
 
+const addSuffixIfNeeded = (title: string, withSuffix: boolean) => {
+    return withSuffix ? `${title} - ${DEFAULTS.title}` : title
+}
+
 export function usePageHead(args: unknown = {}) {
     const route = useRoute()
 
@@ -18,8 +22,8 @@ export function usePageHead(args: unknown = {}) {
 
         const t = meta.value.title
         if (t.default) return DEFAULTS.title
-        if (t.composed) return `${t.content(args)} - ${DEFAULTS.title}`
-        return `${t.content} - ${DEFAULTS.title}`
+        else if (t.composed) return addSuffixIfNeeded(t.content(args), t.withSuffix)
+        return addSuffixIfNeeded(t.content, t.withSuffix)
     })
 
     const description = computed(() => {

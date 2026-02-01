@@ -21,7 +21,12 @@ export const createApp = ViteSSG(
                 path: "/about",
                 component: () => import("@views/AboutView.vue"),
                 meta: {
-                    title: { default: false, composed: false, content: "À propos" },
+                    title: {
+                        default: false,
+                        composed: false,
+                        content: "À propos",
+                        withSuffix: false,
+                    },
                     description: { default: true },
                     dontPregenerate: false,
                 } satisfies CustomRouteMetadata,
@@ -30,7 +35,12 @@ export const createApp = ViteSSG(
                 path: "/projects",
                 component: () => import("@views/ProjectsView.vue"),
                 meta: {
-                    title: { default: false, composed: false, content: "Projets" },
+                    title: {
+                        default: false,
+                        composed: false,
+                        content: "Projets",
+                        withSuffix: false,
+                    },
                     description: {
                         default: false,
                         composed: false,
@@ -51,6 +61,7 @@ export const createApp = ViteSSG(
                             const params = args as { projectName: string }
                             return `Projet "${params.projectName}"`
                         },
+                        withSuffix: false,
                     },
                     description: {
                         default: false,
@@ -67,7 +78,12 @@ export const createApp = ViteSSG(
                 path: "/404",
                 component: () => import("@views/NotFoundView.vue"),
                 meta: {
-                    title: { default: false, composed: false, content: "Page non trouvée" },
+                    title: {
+                        default: false,
+                        composed: false,
+                        content: "Page non trouvée",
+                        withSuffix: false,
+                    },
                     description: { default: true },
                     dontPregenerate: false,
                 } satisfies CustomRouteMetadata,

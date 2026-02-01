@@ -5,7 +5,16 @@ export interface ITimeline {
     dateToString: string
 }
 
-type ComposedOrNotComposed = { composed: true; content: (args: unknown) => string } | { composed: false; content: string }
-type DefaultOrCustom = { default: true } | ({ default: false } & ComposedOrNotComposed)
+type ComposedOrNotComposed<T extends object = object> =
+    | ({ composed: true; content: (args: unknown) => string } & T)
+    | ({ composed: false; content: string } & T)
 
-export type CustomRouteMetadata = { title: DefaultOrCustom, description: DefaultOrCustom, dontPregenerate: boolean }
+type ComposedOrNotComposedAndWithWithoutSuffix = ComposedOrNotComposed<{ withSuffix: boolean }>
+
+type DefaultOrCustom<T extends ComposedOrNotComposed> = { default: true } | ({ default: false } & T)
+
+export type CustomRouteMetadata = {
+    title: DefaultOrCustom<ComposedOrNotComposedAndWithWithoutSuffix>
+    description: DefaultOrCustom<ComposedOrNotComposed>
+    dontPregenerate: boolean
+}
