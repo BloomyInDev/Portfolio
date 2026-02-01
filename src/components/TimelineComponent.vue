@@ -60,6 +60,11 @@ const numberOfItems = computed(() => props.items.length)
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-bottom: -5rem;
+}
+
+.timeline > .container:last-child {
+    margin-bottom: 0;
 }
 
 .timeline > .container.left {
@@ -126,6 +131,7 @@ const numberOfItems = computed(() => props.items.length)
 
     .timeline > .container {
         width: 100%;
+        margin-bottom: 0;
     }
 
     .timeline > .container.right > .bubble {
