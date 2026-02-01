@@ -7,19 +7,19 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
     <footer>
         <p>
             Bastien LUBEN.
-            <a href="https://github.com/BloomyInDev/Portfolio" target="_blank">Licence AGPL v3</a>
+            <a title="Code source & License" href="https://github.com/BloomyInDev/Portfolio" target="_blank">Licence AGPL v3</a>
         </p>
         <div id="links">
-            <a href="mailto:contact+portfolio@bastienluben.dev">
+            <a title="Mail" href="mailto:contact+portfolio@bastienluben.dev">
                 <FontAwesomeIcon :icon="faEnvelope" size="lg" />
             </a>
-            <a href="https://www.linkedin.com/in/bastien-luben/" target="_blank">
+            <a title="LinkedIn" href="https://www.linkedin.com/in/bastien-luben/" target="_blank">
                 <FontAwesomeIcon :icon="faLinkedin" size="lg" />
             </a>
-            <a href="https://github.com/BloomyInDev" target="_blank">
+            <a title="GitHub" href="https://github.com/BloomyInDev" target="_blank">
                 <FontAwesomeIcon :icon="faGithub" size="lg" />
             </a>
-            <a href="https://forge.red.bloomyindev.me/bastien" target="_blank">
+            <a title="Forge Privée" href="https://forge.red.bloomyindev.me/bastien" target="_blank">
                 <FontAwesomeIcon :icon="faGitAlt" size="lg" />
             </a>
         </div>
