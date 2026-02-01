@@ -43,6 +43,7 @@ const htmlFiles = files
     .filter((f) => f !== null)
 
 const metaTags = new Map<string, { name: string; value: string }[]>()
+const duplicateTags: { name: string; value: string; files: string[] }[] = []
 
 for (const filePath of htmlFiles) {
     const content = await readFile(`./${filePath}`, "utf-8")
@@ -57,8 +58,34 @@ for (const filePath of htmlFiles) {
     metaTags.set(filePath, tags)
 }
 
+// Find duplicates
+const tagMap = new Map<string, { value: string; files: string[] }>()
 metaTags.forEach((tags, filePath) => {
-    console.log(`File: ${filePath}`)
+    tags.forEach((tag) => {
+        const key = `${tag.name}:${tag.value}`
+        if (tagMap.has(key)) {
+            tagMap.get(key)!.files.push(filePath)
+        } else {
+            tagMap.set(key, { value: tag.value, files: [filePath] })
+        }
+    })
+})
+
+tagMap.forEach((data, key) => {
+    if (data.files.length === metaTags.size) {
+        const [name] = key.split(":", 1)
+        duplicateTags.push({ name, value: data.value, files: data.files })
+    }
+})
+
+console.log("=== Tags en dupliqués ===\n")
+duplicateTags.forEach((dup) => {
+    console.log(`${dup.name}: ${decodeHtmlEntities(dup.value)}`)
+})
+
+console.log("\n=== Tags par fichiers ===\n")
+metaTags.forEach((tags, filePath) => {
+    console.log(`Fichier: ${filePath}`)
     tags.forEach((tag) => {
         console.log(`  ${tag.name}: ${decodeHtmlEntities(tag.value)}`)
     })
