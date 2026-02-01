@@ -24,6 +24,8 @@ const image = computed(() => {
             return "java.svg"
         case TechnologiesEnum.JAVAFX:
             return "javafx.png"
+        case TechnologiesEnum.LIBGDX:
+            return "libgdx.png"
         case TechnologiesEnum.PYTHON:
             return "python.svg"
         case TechnologiesEnum.GOLANG:

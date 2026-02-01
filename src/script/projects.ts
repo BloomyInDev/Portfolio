@@ -10,6 +10,7 @@ export enum TechnologiesEnum {
     // Langages haut niveau
     JAVA = "Java",
     JAVAFX = "JavaFX", // Extension de Java pour les interfaces graphiques
+    LIBGDX = "libGDX", // Framework de développement de jeux en Java
     PYTHON = "Python",
     GOLANG = "Golang",
 
