@@ -1,7 +1,9 @@
 import { fileURLToPath, URL } from "node:url"
+import fs from "fs/promises"
 
 import { UserConfig } from "vite"
 import { ViteSSGOptions } from "vite-ssg"
+import generateSitemap from "vite-ssg-sitemap"
 import vue from "@vitejs/plugin-vue"
 import vueDevTools from "vite-plugin-vue-devtools"
 
@@ -12,6 +14,8 @@ import type { RouteRecordRaw } from "vue-router"
 import * as child from "child_process"
 
 process.env.VITE_GIT_COMMIT_HASH = child.execSync("git rev-parse --short HEAD").toString()
+
+const badUA = await fs.readFile("src/knownBadUA.txt", "utf-8")
 
 // https://vite.dev/config/
 export default {
@@ -32,6 +36,27 @@ export default {
                     : route.name == "project-detail"
                       ? projects.map((p) => `/project/${p.id}`)
                       : route.path
+            })
+        },
+        onFinished: () => {
+            generateSitemap({
+                hostname: "https://bastienluben.dev",
+                dynamicRoutes: projects.map((p) => `/project/${p.id}`),
+                exclude: ["/404"],
+                priority: {
+                    "/": 0.8,
+                    "/projects": 1.1,
+                    ...projects
+                        .map((p) => `/project/${p.id}`)
+                        .reduce((acc, path) => ({ ...acc, [path]: 1.2 }), {}),
+                },
+                readable: true,
+                generateRobotsTxt: true,
+                robots: [
+                    ...badUA.split("\n").map((ua) => ({ userAgent: ua, disallow: "/" })),
+                    { userAgent: "Googlebot", allow: "/" },
+                    { userAgent: "*", allow: "/" },
+                ],
             })
         },
     },
