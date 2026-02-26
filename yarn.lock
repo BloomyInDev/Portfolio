@@ -2787,6 +2787,11 @@ vite-plugin-vue-inspector@^5.3.2:
     kolorist "^1.8.0"
     magic-string "^0.30.4"
 
+vite-ssg-sitemap@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/vite-ssg-sitemap/-/vite-ssg-sitemap-0.10.0.tgz#87284f905a29e81800acfc0c83c2ac1c525ad0c7"
+  integrity sha512-OIja4fqUMcvWl5+bxQARe3LgzWTd8U/dWHWgrqiC7vv3AmTn0YnhMNUAimQ0M/0Aa9myEIAGLV0yKlYbKP8BJQ==
+
 vite-ssg@^28.2.2:
   version "28.2.2"
   resolved "https://registry.yarnpkg.com/vite-ssg/-/vite-ssg-28.2.2.tgz#83fb8d3ff9a63218f4fb0f136f35e4bfc0680b43"
