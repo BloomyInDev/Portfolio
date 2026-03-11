@@ -33,6 +33,13 @@ export enum MethodsEnum {
     AGILE = "Agile",
     OOP = "OOP",
     UML = "UML",
+    SELF_LEARNING = "Self-learning",
+}
+
+export enum ProjectTypeEnum {
+    PERSONAL = "Personal",
+    ACADEMIC = "Academic",
+    PROFESSIONAL = "Professional",
 }
 
 export type IProjectDate = {
@@ -40,7 +47,6 @@ export type IProjectDate = {
     start: ICustomDate
     /** End of the project */
     end?: ICustomDate
-    toString: () => string
 }
 
 export type IProjectImages = { title?: string; url: string }[]
@@ -62,6 +68,10 @@ export type IProject = {
     knowledges: (TechnologiesEnum | MethodsEnum)[]
     /** Project dates */
     dates: IProjectDate
+    /** Type of the project */
+    type: ProjectTypeEnum
+    /** Old format or new format */
+    newFormat: boolean
 }
 
 export type IIncompleteProject = Omit<IProject, "id" | "dates" | "images"> & {
@@ -101,6 +111,23 @@ export const dateToDateString = (date: ICustomDate): string =>
         year: "numeric",
     })
 
+export const projectNameToId = (name: string): string =>
+    name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[^a-zA-Z0-9 -]/g, "") // Remove everything that is not a letter, number, space or dash
+        .replace(/ /g, "-") // Replace spaces with dashes
+
+export const projectDateToString = (projectDates: IProjectDate): string => {
+    if (projectDates.end === undefined) {
+        return `Depuis ${projectDates.start.definedDay ? "le" : ""} ${dateToDateString(projectDates.start)}`
+    } else if (projectDates.end.date.getMonth() === projectDates.start.date.getMonth()) {
+        return `Du ${projectDates.start.date.toLocaleDateString("fr-FR", { day: "2-digit" })} ${projectDates.end.definedDay ? "au" : "à"} ${dateToDateString(projectDates.end)}`
+    } else {
+        return `${projectDates.start.definedDay ? "Du" : "De"} ${dateToDateString(projectDates.start)} ${projectDates.end.definedDay ? "au" : "à"} ${dateToDateString(projectDates.end)}`
+    }
+}
+
 const unsortedProjects: IIncompleteProject[] = [
     {
         title: "Vox Populi",
@@ -119,6 +146,8 @@ const unsortedProjects: IIncompleteProject[] = [
             ].join("\n"),
             "Je remercie mes coéquipiers [Clément Dubois](https://rybois-dev.github.io/portfolio/src/), [Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/) et [Raphaël Fouqué]() pour ce travail de groupe réussi.",
         ],
+        newFormat: false,
+        type: ProjectTypeEnum.ACADEMIC,
         knowledges: [
             TechnologiesEnum.PHP,
             TechnologiesEnum.CSS,
@@ -172,6 +201,8 @@ const unsortedProjects: IIncompleteProject[] = [
                 .map((name) => `- ${name}`)
                 .join("\n"),
         ],
+        newFormat: false,
+        type: ProjectTypeEnum.PERSONAL,
         knowledges: [
             TechnologiesEnum.HTML,
             TechnologiesEnum.CSS,
@@ -199,6 +230,8 @@ const unsortedProjects: IIncompleteProject[] = [
             "Ce projet m'a également permis de comprendre comment implémenter des interfaces Homme <-> Machine en utilisant JavaFX pour créer une expérience utilisateur interactive et engageante.",
             "J'ai travaillé sur ce projet avec Natan Cantié.",
         ],
+        newFormat: false,
+        type: ProjectTypeEnum.ACADEMIC,
         knowledges: [
             TechnologiesEnum.JAVA,
             TechnologiesEnum.JAVAFX,
@@ -240,6 +273,8 @@ const unsortedProjects: IIncompleteProject[] = [
                 .map((name) => `- ${name}`)
                 .join("\n"),
         ],
+        newFormat: false,
+        type: ProjectTypeEnum.PERSONAL,
         knowledges: [
             TechnologiesEnum.JAVA,
             TechnologiesEnum.LIBGDX,
@@ -276,6 +311,8 @@ const unsortedProjects: IIncompleteProject[] = [
                 .map((name) => `- ${name}`)
                 .join("\n"),
         ],
+        newFormat: false,
+        type: ProjectTypeEnum.PERSONAL,
         knowledges: [
             TechnologiesEnum.JAVA,
             TechnologiesEnum.LIBGDX,
@@ -301,27 +338,13 @@ const unsortedProjects: IIncompleteProject[] = [
 export const projects = unsortedProjects
     .map((project) => ({
         ...project,
-        id: project.title
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[^a-zA-Z0-9 -]/g, "") // Remove everything that is not a letter, number, space or dash
-            .replace(/ /g, "-"), // Replace spaces with dashes
+        id: projectNameToId(project.title),
+
         description: Array.isArray(project.description)
-            ? project.description.join("\n\n")
+            ? project.description.join(project.newFormat ? "\n" : "\n".repeat(2))
             : project.description,
         dates: {
             ...project.dates,
-            toString: () => {
-                if (project.dates.end === undefined) {
-                    return `Depuis ${project.dates.start.definedDay ? "le" : ""} ${dateToDateString(project.dates.start)}`
-                } else if (
-                    project.dates.end.date.getMonth() === project.dates.start.date.getMonth()
-                ) {
-                    return `Du ${project.dates.start.date.toLocaleDateString("fr-FR", { day: "2-digit" })} ${project.dates.end.definedDay ? "au" : "à"} ${dateToDateString(project.dates.end)}`
-                } else {
-                    return `${project.dates.start.definedDay ? "Du" : "De"} ${dateToDateString(project.dates.start)} ${project.dates.end.definedDay ? "au" : "à"} ${dateToDateString(project.dates.end)}`
-                }
-            },
         },
         images: project.images ?? [],
     }))
