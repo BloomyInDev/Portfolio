@@ -50,6 +50,25 @@ export const createApp = ViteSSG(
                 } satisfies CustomRouteMetadata,
             },
             {
+                path: "/ppp",
+                component: () => import("@views/PPPSpecificView.vue"),
+                meta: {
+                    title: {
+                        default: false,
+                        composed: false,
+                        content: "PPP - Portfolio d'apprentissage",
+                        withSuffix: true,
+                    },
+                    description: {
+                        default: false,
+                        composed: false,
+                        content:
+                            "Portfolio d'apprentissage BUT Informatique : compétences C1 à C6, preuves par projets et synthèse PPP.",
+                    },
+                    dontPregenerate: false,
+                } satisfies CustomRouteMetadata,
+            },
+            {
                 name: "project-detail",
                 path: "/project/:projectName",
                 component: () => import("@views/ProjectDetailView.vue"),
