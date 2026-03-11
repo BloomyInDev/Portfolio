@@ -45,10 +45,10 @@ export default {
                 exclude: ["/404"],
                 priority: {
                     "/": 0.8,
-                    "/projects": 1.1,
+                    "/projects": 0.8,
                     ...projects
                         .map((p) => `/project/${p.id}`)
-                        .reduce((acc, path) => ({ ...acc, [path]: 1.2 }), {}),
+                        .reduce((acc, path) => ({ ...acc, [path]: 1 }), {}),
                 },
                 readable: true,
                 generateRobotsTxt: true,
