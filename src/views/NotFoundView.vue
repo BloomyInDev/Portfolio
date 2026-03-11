@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { RouterLink } from "vue-router"
 import ButtonComponent from "@components/ButtonComponent.vue"
-import { usePageHead } from "@/script/routing";
+import { usePageHead } from "@/script/routing"
 
 usePageHead()
 </script>

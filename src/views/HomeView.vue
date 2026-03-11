@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import PresentationComponent from "@components/PresentationComponent.vue"
 import ButtonComponent from "@components/ButtonComponent.vue"
-import { usePageHead } from "@/script/routing";
+import { usePageHead } from "@/script/routing"
 
 usePageHead()
 </script>
