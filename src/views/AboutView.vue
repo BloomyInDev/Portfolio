@@ -11,6 +11,7 @@ usePageHead()
 <template>
     <section>
         <h2>A propos</h2>
+        <p>Je m'appelle Bastien LUBEN</p>
         <p>
             Pour me contacter, n'hésitez pas à m'envoyer un email à l'adresse
             <a href="mailto:contact+portfolio@bastienluben.dev"
