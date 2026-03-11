@@ -7,7 +7,12 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
     <footer>
         <p>
             Bastien LUBEN.
-            <a title="Code source & License" href="https://github.com/BloomyInDev/Portfolio" target="_blank">Licence AGPL v3</a>
+            <a
+                title="Code source & License"
+                href="https://github.com/BloomyInDev/Portfolio"
+                target="_blank"
+                >Licence AGPL v3</a
+            >
         </p>
         <div id="links">
             <a title="Mail" href="mailto:contact+portfolio@bastienluben.dev">
