@@ -144,7 +144,7 @@ const unsortedProjects: IIncompleteProject[] = [
                 "- Bulma pour le design du site.",
                 "- Gitlab et Trello pour le contrôle de version et la collaboration en équipe.",
             ].join("\n"),
-            "Je remercie mes coéquipiers [Clément Dubois](https://rybois-dev.github.io/portfolio/src/), [Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/) et [Raphaël Fouqué]() pour ce travail de groupe réussi.",
+            "Je remercie mes coéquipiers [Clément Dubois](https://rybois-dev.github.io/portfolio/src/), [Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/) et [Raphaël Fouqué](https://www.linkedin.com/in/raphael-fouque689/) pour ce travail de groupe réussi.",
         ],
         newFormat: false,
         type: ProjectTypeEnum.ACADEMIC,
@@ -190,16 +190,18 @@ const unsortedProjects: IIncompleteProject[] = [
             "Le site présente des informations clés sur l'importance de l'inclusion numérique, les pratiques responsables dans le développement technologique, et les initiatives durables dans le secteur numérique.",
             "Pendant cet évènement, nous avons travaillé en équipe pour concevoir, développer et déployer le site web en un temps limité, mettant en pratique nos compétences techniques et notre capacité à collaborer efficacement.",
             "Ce projet m'a permis d'approfondir mes connaissances en développement web tout en travaillant sur un sujet qui m'interesse particulièrement.",
+            "Ce projet m'a également permis de développer mes compétences en CI/CD, avec la configuration d'un pipeline de déploiement automatique pour automatiser le processus de mise à jour du site sur Github Pages à chaque modification du code.",
             "J'ai également eu le plaisir de réaliser entièrement le mini-jeu Snake intégré au site, ce qui a ajouté une dimension interactive et ludique à notre projet de sensibilisation tout en remplissant un des nombreux défis disponibles lors de la nuit.",
             "J'ai travaillé aux côtés de plusieurs amis pour réaliser ce projet. Ces personnes sont",
             [
                 "[Clément Dubois](https://rybois-dev.github.io/portfolio/src/)",
                 "[Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/)",
-                "Vincent Quitin",
-                "Pierre-Loup Lavilledieu",
+                "[Vincent Quitin](https://www.linkedin.com/in/vincent-quintin-8a097b31b/)",
+                "[Pierre-Loup Lavilledieu](https://www.linkedin.com/in/pierre-loup-lavilledieu-70b370371/)",
             ]
                 .map((name) => `- ${name}`)
                 .join("\n"),
+            // "Ce site est actuellement déployé avec Github Pages et est accessible [juste ici](https://ndi2025.bastienluben.dev). ",
         ],
         newFormat: false,
         type: ProjectTypeEnum.PERSONAL,
@@ -228,7 +230,7 @@ const unsortedProjects: IIncompleteProject[] = [
             "Ce projet m'a permis de mettre en pratique mes compétences en programmation orientée objet en me basant sur le diagramme de classe fourni, tout en approfondissant ma compréhension des concepts fondamentaux de la programmation Java.",
             "En travaillant sur ce projet, j'ai acquis une expérience précieuse dans la conception et le développement d'une application complexe, ainsi que dans la collaboration avec d'autres membres de l'équipe pour atteindre nos objectifs communs.",
             "Ce projet m'a également permis de comprendre comment implémenter des interfaces Homme <-> Machine en utilisant JavaFX pour créer une expérience utilisateur interactive et engageante.",
-            "J'ai travaillé sur ce projet avec Natan Cantié.",
+            "J'ai travaillé sur ce projet avec [Natan Cantié](https://www.linkedin.com/in/natan-cantie-018550347/).",
         ],
         newFormat: false,
         type: ProjectTypeEnum.ACADEMIC,
@@ -306,7 +308,7 @@ const unsortedProjects: IIncompleteProject[] = [
                 "[Omar Qaryaqos](https://www.linkedin.com/in/omar-qaryaqos-44ab6427a/)",
                 "[Quentin Nozieres](https://www.linkedin.com/in/quentin-nozieres-218a843a8/)",
                 "[Léo Mialon](https://www.linkedin.com/in/l%C3%A9o-mialon-8aa378397/)",
-                "Romain Therond",
+                "[Romain Therond](https://www.linkedin.com/in/romain-therond-59654b3aa/)",
             ]
                 .map((name) => `- ${name}`)
                 .join("\n"),
