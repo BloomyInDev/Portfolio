@@ -20,6 +20,9 @@ export enum TechnologiesEnum {
     SQL = "SQL",
     PLSQL = "PLSQL",
 
+    // Systèmes d'exploitation
+    LINUX = "Linux",
+
     // Coordination
     GIT = "Git",
     GITHUB = "Github",
