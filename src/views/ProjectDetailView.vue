@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MethodsEnum, projects, TechnologiesEnum } from "@/script/projects"
+import { MethodsEnum, projectDateToString, projects, TechnologiesEnum } from "@/script/projects"
 import { usePageHead } from "@/script/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
@@ -18,7 +18,9 @@ const projectName = useRoute().params.projectName as string
 
 const projectInfo = projects.find((project) => project.id === projectName) || null
 
-const projectDate = computed(() => (projectInfo === null ? "" : projectInfo.dates.toString()))
+const projectDate = computed(() =>
+    projectInfo === null ? "" : projectDateToString(projectInfo.dates),
+)
 const projectTechnologies = computed<TechnologiesEnum[]>(() =>
     projectInfo === null
         ? []
@@ -88,7 +90,11 @@ usePageHead({
                     <p>{{ projectMethods }}</p>
                 </div>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
-                <VueMarkdown :source="projectInfo.description" id="markdown" />
+                <VueMarkdown
+                    :source="projectInfo.description"
+                    id="markdown"
+                    :options="{ breaks: true }"
+                />
                 <CarousselComponent
                     v-if="projectInfo.images && projectInfo.images.length > 1"
                     :images="projectInfo.images"
@@ -161,6 +167,10 @@ div#content {
     width: 100%;
     display: block;
     object-fit: cover;
+}
+
+#markdown {
+    line-height: 1.2;
 }
 
 #markdown :deep(a) {

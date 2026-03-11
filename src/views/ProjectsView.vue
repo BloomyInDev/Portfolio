@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { projects } from "@/script/projects"
+import { projectDateToString, projects } from "@/script/projects"
 import { usePageHead } from "@/script/routing"
 import type { ITimeline } from "@/types"
 import TimelineComponent from "@components/TimelineComponent.vue"
@@ -8,7 +8,7 @@ const timeline = projects.map((project) => ({
     title: project.title,
     description: project.subtitle,
     url: `/project/${project.id}`,
-    dateToString: project.dates.toString(),
+    dateToString: projectDateToString(project.dates),
 })) satisfies ITimeline[]
 
 usePageHead()
