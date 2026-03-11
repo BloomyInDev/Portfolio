@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
 :root {
     background-image: linear-gradient(115deg, #004094 50%, #00f7ff);
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     color: white;
 
     /** Define CSS variables for consistent theming **/
