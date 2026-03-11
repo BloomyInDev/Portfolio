@@ -36,6 +36,8 @@ const image = computed(() => {
             return "sql.png"
         case TechnologiesEnum.PLSQL:
             return "plsql.svg"
+        case TechnologiesEnum.LINUX:
+            return "linux.svg"
         case TechnologiesEnum.GIT:
             return "git.svg"
         case TechnologiesEnum.GITHUB:
