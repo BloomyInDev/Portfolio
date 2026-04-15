@@ -72,6 +72,8 @@ export type IProject = {
     type: ProjectTypeEnum
     /** Old format or new format */
     newFormat: boolean
+    /**  Is published ? */
+    published: boolean
 }
 
 export type IIncompleteProject = Omit<IProject, "id" | "dates" | "images"> & {
@@ -132,6 +134,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "Vox Populi",
         subtitle: "Projet de démocratie participative - Projet d'études",
+        published: true,
         description: [
             "Vox Populi est un projet de démocratie participative afin de mettre en pratique nos conaissances",
             "Ce projet, réalisé en équipe de 4, avait pour objectif d'appliquer les concepts et méthodes apprises en cours, notamment l'architecture MVC et les méthodes agiles.",
@@ -185,6 +188,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "Nuit de l'Info 2025",
         subtitle: "Création d'un site de sensibilisation à la démarche NIRD",
+        published: true,
         description: [
             "Lors de la Nuit de l'Info 2025, nous avons créé un site web visant à sensibiliser les étudiants pour la démarche NIRD (Numérique Inclusif, Responsable et Durable).",
             "Le site présente des informations clés sur l'importance de l'inclusion numérique, les pratiques responsables dans le développement technologique, et les initiatives durables dans le secteur numérique.",
@@ -225,6 +229,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "SAÉ Pokémon",
         subtitle: "Projet d'implémentation du célèbre jeu Pokémon Trading Card Game en Java",
+        published: true,
         description: [
             "Dans le cadre de ma formation, j'ai participé à un projet visant à implémenter le célèbre jeu Pokémon Trading Card Game en utilisant le langage de programmation Java.",
             "Ce projet m'a permis de mettre en pratique mes compétences en programmation orientée objet en me basant sur le diagramme de classe fourni, tout en approfondissant ma compréhension des concepts fondamentaux de la programmation Java.",
@@ -260,6 +265,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "CodeGameJam 2025 - 9ème édition",
         subtitle: "Développement d'un jeu vidéo en équipe lors de la CodeGameJam 2025",
+        published: true,
         description: [
             "Lors de la 9ème édition de la CodeGameJam, j'ai eu l'opportunité de participer à un événement passionnant où j'ai travaillé en équipe pour développer un jeu vidéo en 30 heures.",
             "Ce projet m'a permis de collaborer avec d'autres développeurs pour créer une expérience de jeu unique et engageante.",
@@ -293,6 +299,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "CodeGameJam 2026 - 10ème édition",
         subtitle: "Développement d'un jeu vidéo en équipe lors de la CodeGameJam 2026",
+        published: true,
         description: [
             "Lors de la 10ème édition de la CodeGameJam, j'ai de nouveau eu l'opportunité de participer à cet événement passionnant où j'ai travaillé en équipe pour développer un jeu vidéo en 30 heures.",
             'Le thème de cette édition étant "Faites des clics", nous avons décidé d\'utiliser à fond le concept des clics.',
@@ -338,6 +345,7 @@ const unsortedProjects: IIncompleteProject[] = [
     {
         title: "Portfolio personnel",
         subtitle: "Création de mon portfolio personnel pour présenter mes projets et compétences",
+        published: true,
         description: [
             "J'ai créé ce portfolio personnel dans le but de présenter mes projets, mes compétences et mon parcours.",
             "Ce projet m'a permis de mettre en pratique mes compétences en développement web pour créer une plateforme qui reflète ma personnalité et mes réalisations.",
@@ -366,6 +374,7 @@ const unsortedProjects: IIncompleteProject[] = [
         title: "Homelab",
         subtitle:
             "Mise en place d'un réseau de serveurs personnels pour l'hébergement de services et l'apprentissage de l'administration système",
+        published: true,
         description: [
             "J'ai mis en place un homelab, c'est-à-dire un réseau de serveurs personnels, dans le but d'héberger divers services",
             "Ce projet m'a permis de développer mes compétences en administration système, en gestion de réseaux et en sécurité informatique.",
@@ -436,6 +445,7 @@ const unsortedProjects: IIncompleteProject[] = [
         title: "Stage chez Dmoti",
         subtitle:
             "Stage de développement web chez Dmoti, une entreprise spécialisée dans la Gestion Technique des Batiments (GTB)",
+        published: false,
         description: ["WIP"],
         dates: { start: createDate({ month: MonthEnum.April, year: 2026 }) },
         knowledges: [],
@@ -445,6 +455,7 @@ const unsortedProjects: IIncompleteProject[] = [
 ]
 
 export const projects = unsortedProjects
+    .filter((project) => project.dates.start.date.getTime() <= Date.now() && project.published)
     .map((project) => ({
         ...project,
         id: projectNameToId(project.title),
