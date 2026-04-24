@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MethodsEnum, projectDateToString, projects, TechnologiesEnum } from "@/content/projects"
-import { usePageHead } from "@/script/routing"
+import { usePageHead } from "@/lib/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
 import TechnologiesComponent from "@components/TechnologiesComponent.vue"
