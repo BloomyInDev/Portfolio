@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IProject } from "@/script/projects"
+import type { IProject } from "@/content/projects"
 import { onMounted, ref } from "vue"
 
 const props = defineProps<{

@@ -12,7 +12,7 @@ import webfontDownload from "vite-plugin-webfont-dl"
 import { compression, defineAlgorithm } from "vite-plugin-compression2"
 import zlib from "zlib"
 
-import { projects } from "./src/script/projects"
+import { projects } from "./src/content/projects"
 import type { CustomRouteMetadata } from "./src/types"
 import type { RouteRecordRaw } from "vue-router"
 
