@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePageHead } from "@/script/routing"
+import { usePageHead } from "@/lib/routing"
 import { computed } from "vue"
 
 const hash = computed(() => import.meta.env.VITE_GIT_COMMIT_HASH)

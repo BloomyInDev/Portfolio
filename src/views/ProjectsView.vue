@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { projectDateToString, projects } from "@/content/projects"
-import { usePageHead } from "@/script/routing"
+import { usePageHead } from "@/lib/routing"
 import type { ITimeline } from "@/types"
 import TimelineComponent from "@components/TimelineComponent.vue"
 
