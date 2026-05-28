@@ -2,6 +2,8 @@
 import { TechnologiesEnum } from "@/content/projects"
 import { computed } from "vue"
 
+const icons = import.meta.glob("@/assets/languages/*", { eager: true, import: "default" }) as Record<string, string>
+
 const props = defineProps<{
     technology: TechnologiesEnum
 }>()
@@ -50,7 +52,8 @@ const image = computed(() => {
 })
 
 const imageUrl = computed(() => {
-    return image.value === "default" ? undefined : `/languages/${image.value}`
+    if (image.value === "default") return undefined
+    return icons[`/src/assets/languages/${image.value}`]
 })
 </script>
 <template>
