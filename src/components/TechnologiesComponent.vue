@@ -22,6 +22,8 @@ const image = computed(() => {
             return "php.svg"
         case TechnologiesEnum.VUEJS:
             return "vuejs.svg"
+        case TechnologiesEnum.NESTJS:
+            return "nestjs.svg"
         case TechnologiesEnum.JAVA:
             return "java.svg"
         case TechnologiesEnum.JAVAFX:
@@ -36,8 +38,8 @@ const image = computed(() => {
             return "c.svg"
         case TechnologiesEnum.SQL:
             return "sql.png"
-        case TechnologiesEnum.PLSQL:
-            return "plsql.svg"
+        case TechnologiesEnum.POSTGRESQL:
+            return "postgresql.svg"
         case TechnologiesEnum.LINUX:
             return "linux.svg"
         case TechnologiesEnum.GIT:
@@ -46,6 +48,12 @@ const image = computed(() => {
             return "github.svg"
         case TechnologiesEnum.DOCKER:
             return "docker.svg"
+        case TechnologiesEnum.WORDPRESS:
+            return "wordpress.svg"
+        case TechnologiesEnum.MONDAY:
+            return "monday.png"
+        case TechnologiesEnum.OVH:
+            return "ovh.png"
         default:
             return "default"
     }

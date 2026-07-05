@@ -6,6 +6,7 @@ export enum TechnologiesEnum {
     TYPESCRIPT = "Typescript",
     PHP = "PHP",
     VUEJS = "Vue.js",
+    NESTJS = "NestJS",
 
     // Langages haut niveau
     JAVA = "Java",
@@ -18,7 +19,7 @@ export enum TechnologiesEnum {
     C = "C",
     // Langages de base de donnees
     SQL = "SQL",
-    PLSQL = "PLSQL",
+    POSTGRESQL = "PostgreSQL",
 
     // Systemes d'exploitation
     LINUX = "Linux",
@@ -27,6 +28,11 @@ export enum TechnologiesEnum {
     GIT = "Git",
     GITHUB = "Github",
     DOCKER = "Docker",
+
+    // Outils / Plateformes
+    WORDPRESS = "WordPress",
+    MONDAY = "Monday.com",
+    OVH = "OVH",
 }
 
 export enum MethodsEnum {
