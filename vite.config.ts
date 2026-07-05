@@ -8,6 +8,7 @@ import vue from "@vitejs/plugin-vue"
 import vueDevTools from "vite-plugin-vue-devtools"
 import { ViteImageOptimizer as viteImageOptimizer } from "vite-plugin-image-optimizer"
 import convertToWebp from "./plugins/convertToWebp"
+import stripUnpublishedProjects from "./plugins/stripUnpublishedProjects"
 import webfontDownload from "vite-plugin-webfont-dl"
 import { compression, defineAlgorithm } from "vite-plugin-compression2"
 import zlib from "zlib"
@@ -43,6 +44,7 @@ export default {
     plugins: [
         vue(),
         vueDevTools(),
+        stripUnpublishedProjects(),
         convertToWebp(imageOptimizerOptions.webp),
         viteImageOptimizer(imageOptimizerOptions),
         webfontDownload(["https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"]),

@@ -2,8 +2,15 @@ import { unsortedProjects } from "./data"
 import { projectNameToId } from "./slug"
 import type { IProject } from "./types"
 
+// `import.meta.env` is untyped here: this module is also loaded from vite.config.ts
+// (Node context, no vite/client types), where `import.meta.env` is undefined at runtime.
+const isDev = Boolean((import.meta as { env?: { DEV?: boolean } }).env?.DEV)
+
 export const projects: IProject[] = unsortedProjects
-    .filter((project) => project.dates.start.date.getTime() <= Date.now() && project.published)
+    .filter(
+        (project) =>
+            project.dates.start.date.getTime() <= Date.now() && (project.published || isDev),
+    )
     .map((project) => ({
         ...project,
         id: projectNameToId(project.title),
