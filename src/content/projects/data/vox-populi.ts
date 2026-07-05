@@ -1,5 +1,6 @@
 import { MonthEnum, createDate } from "../date"
-import { MethodsEnum, ProjectTypeEnum, TechnologiesEnum, type IIncompleteProject } from "../types"
+import { LanguagesEnum, ToolsEnum } from "../technologies"
+import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
 
 export default {
     title: "Vox Populi",
@@ -22,11 +23,11 @@ export default {
     newFormat: false,
     type: ProjectTypeEnum.ACADEMIC,
     knowledges: [
-        TechnologiesEnum.PHP,
-        TechnologiesEnum.CSS,
-        TechnologiesEnum.JAVASCRIPT,
-        TechnologiesEnum.SQL,
-        TechnologiesEnum.GIT,
+        LanguagesEnum.PHP,
+        LanguagesEnum.CSS,
+        LanguagesEnum.JAVASCRIPT,
+        LanguagesEnum.SQL,
+        ToolsEnum.GIT,
         MethodsEnum.OOP,
         MethodsEnum.AGILE,
     ],

@@ -1,5 +1,6 @@
 import { MonthEnum, createDate } from "../date"
-import { MethodsEnum, ProjectTypeEnum, TechnologiesEnum, type IIncompleteProject } from "../types"
+import { LanguagesEnum, ToolsEnum } from "../technologies"
+import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
 
 export default {
     title: "Nuit de l'Info 2025",
@@ -26,10 +27,10 @@ export default {
     newFormat: false,
     type: ProjectTypeEnum.PERSONAL,
     knowledges: [
-        TechnologiesEnum.HTML,
-        TechnologiesEnum.CSS,
-        TechnologiesEnum.TYPESCRIPT,
-        TechnologiesEnum.GIT,
+        LanguagesEnum.HTML,
+        LanguagesEnum.CSS,
+        LanguagesEnum.TYPESCRIPT,
+        ToolsEnum.GIT,
         MethodsEnum.AGILE,
     ],
     images: [

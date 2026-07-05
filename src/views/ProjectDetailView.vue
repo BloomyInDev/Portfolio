@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MethodsEnum, projectDateToString, projects, TechnologiesEnum } from "@/content/projects"
+import { MethodsEnum, projectDateToString, projects, type TechnologyEnum } from "@/content/projects"
 import { usePageHead } from "@/lib/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
@@ -21,11 +21,11 @@ const projectInfo = projects.find((project) => project.id === projectName) || nu
 const projectDate = computed(() =>
     projectInfo === null ? "" : projectDateToString(projectInfo.dates),
 )
-const projectTechnologies = computed<TechnologiesEnum[]>(() =>
+const projectTechnologies = computed<TechnologyEnum[]>(() =>
     projectInfo === null
         ? []
-        : projectInfo.knowledges.filter((t): t is TechnologiesEnum =>
-              Object.values(TechnologiesEnum).includes(t as TechnologiesEnum),
+        : projectInfo.knowledges.filter(
+              (t): t is TechnologyEnum => !Object.values(MethodsEnum).includes(t as MethodsEnum),
           ),
 )
 const projectMethods = computed<string>(() =>

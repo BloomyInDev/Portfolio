@@ -1,5 +1,6 @@
 import { MonthEnum, createDate } from "../date"
-import { MethodsEnum, ProjectTypeEnum, TechnologiesEnum, type IIncompleteProject } from "../types"
+import { DatabasesEnum, FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
+import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
 
 export default {
     title: "Stage chez Dmoti",
@@ -36,16 +37,16 @@ export default {
         end: createDate({ day: 3, month: MonthEnum.July, year: 2026 }),
     },
     knowledges: [
-        TechnologiesEnum.PHP,
-        TechnologiesEnum.VUEJS,
-        TechnologiesEnum.NESTJS,
-        TechnologiesEnum.POSTGRESQL,
-        TechnologiesEnum.TYPESCRIPT,
-        TechnologiesEnum.GIT,
-        TechnologiesEnum.DOCKER,
-        TechnologiesEnum.WORDPRESS,
-        TechnologiesEnum.MONDAY,
-        TechnologiesEnum.OVH,
+        LanguagesEnum.PHP,
+        LanguagesEnum.TYPESCRIPT,
+        FrameworksEnum.VUEJS,
+        FrameworksEnum.NESTJS,
+        DatabasesEnum.POSTGRESQL,
+        ToolsEnum.GIT,
+        ToolsEnum.DOCKER,
+        ToolsEnum.WORDPRESS,
+        ToolsEnum.MONDAY,
+        ToolsEnum.OVH,
         MethodsEnum.AGILE,
         MethodsEnum.SELF_LEARNING,
     ],

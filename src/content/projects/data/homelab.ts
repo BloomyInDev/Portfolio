@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
 import { projectNameToId } from "../slug"
-import { MethodsEnum, ProjectTypeEnum, TechnologiesEnum, type IIncompleteProject } from "../types"
+import { ToolsEnum } from "../technologies"
+import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
 
 export default {
     title: "Homelab",
@@ -71,5 +72,5 @@ export default {
     dates: {
         start: createDate({ month: MonthEnum.December, year: 2024 }),
     },
-    knowledges: [TechnologiesEnum.LINUX, TechnologiesEnum.DOCKER, MethodsEnum.SELF_LEARNING],
+    knowledges: [ToolsEnum.LINUX, ToolsEnum.DOCKER, MethodsEnum.SELF_LEARNING],
 } satisfies IIncompleteProject
