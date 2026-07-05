@@ -7,6 +7,7 @@ import portfolio from "./portfolio"
 import saePokemon from "./sae-pokemon"
 import stageDmoti from "./stage-dmoti"
 import voxPopuli from "./vox-populi"
+import zzzDebug from "./zzz-debug"
 
 export const unsortedProjects: IIncompleteProject[] = [
     voxPopuli,
@@ -17,4 +18,5 @@ export const unsortedProjects: IIncompleteProject[] = [
     portfolio,
     homelab,
     stageDmoti,
+    zzzDebug,
 ]
