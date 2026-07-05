@@ -4,10 +4,10 @@ export { projectNameToId } from "./slug"
 export {
     MethodsEnum,
     ProjectTypeEnum,
-    TechnologiesEnum,
     type ICustomDate,
     type IIncompleteProject,
     type IProject,
     type IProjectDate,
     type IProjectImages,
 } from "./types"
+export { LanguagesEnum, FrameworksEnum, DatabasesEnum, ToolsEnum, type TechnologyEnum } from "./technologies"

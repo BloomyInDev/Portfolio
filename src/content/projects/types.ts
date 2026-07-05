@@ -1,39 +1,4 @@
-export enum TechnologiesEnum {
-    // Web
-    HTML = "HTML",
-    CSS = "CSS",
-    JAVASCRIPT = "Javascript",
-    TYPESCRIPT = "Typescript",
-    PHP = "PHP",
-    VUEJS = "Vue.js",
-    NESTJS = "NestJS",
-
-    // Langages haut niveau
-    JAVA = "Java",
-    JAVAFX = "JavaFX", // Extension de Java pour les interfaces graphiques
-    LIBGDX = "libGDX", // Framework de développement de jeux en Java
-    PYTHON = "Python",
-    GOLANG = "Golang",
-
-    // Langages bas niveau
-    C = "C",
-    // Langages de base de donnees
-    SQL = "SQL",
-    POSTGRESQL = "PostgreSQL",
-
-    // Systemes d'exploitation
-    LINUX = "Linux",
-
-    // Coordination
-    GIT = "Git",
-    GITHUB = "Github",
-    DOCKER = "Docker",
-
-    // Outils / Plateformes
-    WORDPRESS = "WordPress",
-    MONDAY = "Monday.com",
-    OVH = "OVH",
-}
+import type { TechnologyEnum } from "./technologies"
 
 export enum MethodsEnum {
     AGILE = "Agile",
@@ -71,7 +36,7 @@ export type IProject = {
     /** Images associated with the project */
     images: IProjectImages
     /** Knowledges associated with the project */
-    knowledges: (TechnologiesEnum | MethodsEnum)[]
+    knowledges: (TechnologyEnum | MethodsEnum)[]
     /** Project dates */
     dates: IProjectDate
     /** Type of the project */

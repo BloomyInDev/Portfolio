@@ -1,59 +1,77 @@
 <script setup lang="ts">
-import { TechnologiesEnum } from "@/content/projects"
+import { DatabasesEnum, FrameworksEnum, LanguagesEnum, ToolsEnum, type TechnologyEnum } from "@/content/projects"
 import { computed } from "vue"
 
-const icons = import.meta.glob("@/assets/languages/*", { eager: true, import: "default" }) as Record<string, string>
+const icons = import.meta.glob("@/assets/technologies/**/*", { eager: true, import: "default" }) as Record<
+    string,
+    string
+>
+const iconsByName = Object.fromEntries(
+    Object.entries(icons).map(([path, url]) => [path.split("/").pop() as string, url]),
+)
 
 const props = defineProps<{
-    technology: TechnologiesEnum
+    technology: TechnologyEnum
 }>()
 
 const image = computed(() => {
     switch (props.technology) {
-        case TechnologiesEnum.HTML:
+        case LanguagesEnum.HTML:
             return "html.svg"
-        case TechnologiesEnum.CSS:
+        case LanguagesEnum.CSS:
             return "css.svg"
-        case TechnologiesEnum.JAVASCRIPT:
+        case LanguagesEnum.JAVASCRIPT:
             return "javascript.svg"
-        case TechnologiesEnum.TYPESCRIPT:
+        case LanguagesEnum.TYPESCRIPT:
             return "typescript.svg"
-        case TechnologiesEnum.PHP:
+        case LanguagesEnum.PHP:
             return "php.svg"
-        case TechnologiesEnum.VUEJS:
-            return "vuejs.svg"
-        case TechnologiesEnum.NESTJS:
-            return "nestjs.svg"
-        case TechnologiesEnum.JAVA:
+        case LanguagesEnum.JAVA:
             return "java.svg"
-        case TechnologiesEnum.JAVAFX:
-            return "javafx.png"
-        case TechnologiesEnum.LIBGDX:
-            return "libgdx.png"
-        case TechnologiesEnum.PYTHON:
+        case LanguagesEnum.PYTHON:
             return "python.svg"
-        case TechnologiesEnum.GOLANG:
-            return "golang.svg"
-        case TechnologiesEnum.C:
+        case LanguagesEnum.GOLANG:
+            return "go.svg"
+        case LanguagesEnum.C:
             return "c.svg"
-        case TechnologiesEnum.SQL:
+        case LanguagesEnum.SQL:
             return "sql.png"
-        case TechnologiesEnum.POSTGRESQL:
+        case FrameworksEnum.VUEJS:
+            return "vuejs.svg"
+        case FrameworksEnum.NESTJS:
+            return "nestjs.svg"
+        case FrameworksEnum.JAVAFX:
+            return "javafx.png"
+        case FrameworksEnum.LIBGDX:
+            return "libgdx.png"
+        case FrameworksEnum.ASTRO:
+            return "astro.svg"
+        case FrameworksEnum.SVELTE:
+            return "svelte.svg"
+        case FrameworksEnum.TAILWINDCSS:
+            return "tailwindcss.svg"
+        case FrameworksEnum.BOOTSTRAP:
+            return "bootstrap.svg"
+        case DatabasesEnum.POSTGRESQL:
             return "postgresql.svg"
-        case TechnologiesEnum.LINUX:
+        case ToolsEnum.LINUX:
             return "linux.svg"
-        case TechnologiesEnum.GIT:
+        case ToolsEnum.GIT:
             return "git.svg"
-        case TechnologiesEnum.GITHUB:
+        case ToolsEnum.GITHUB:
             return "github.svg"
-        case TechnologiesEnum.DOCKER:
+        case ToolsEnum.DOCKER:
             return "docker.svg"
-        case TechnologiesEnum.WORDPRESS:
+        case ToolsEnum.WORDPRESS:
             return "wordpress.svg"
-        case TechnologiesEnum.MONDAY:
+        case ToolsEnum.MONDAY:
             return "monday.png"
-        case TechnologiesEnum.OVH:
+        case ToolsEnum.OVH:
             return "ovh.png"
+        case ToolsEnum.NODEJS:
+            return "nodejs.svg"
+        case ToolsEnum.VERCEL:
+            return "vercel.svg"
         default:
             return "default"
     }
@@ -61,7 +79,7 @@ const image = computed(() => {
 
 const imageUrl = computed(() => {
     if (image.value === "default") return undefined
-    return icons[`/src/assets/languages/${image.value}`]
+    return iconsByName[image.value]
 })
 </script>
 <template>
