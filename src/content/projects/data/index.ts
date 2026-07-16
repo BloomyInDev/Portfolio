@@ -6,6 +6,7 @@ import ndi2025 from "./ndi2025"
 import portfolio from "./portfolio"
 import saePokemon from "./sae-pokemon"
 import stageDmoti from "./stage-dmoti"
+import timeTracker from "./time-tracker"
 import voxPopuli from "./vox-populi"
 import zzzDebug from "./zzz-debug"
 
@@ -17,6 +18,7 @@ export const unsortedProjects: IIncompleteProject[] = [
     cgj2026,
     portfolio,
     homelab,
+    timeTracker,
     stageDmoti,
     zzzDebug,
 ]
