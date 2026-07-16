@@ -32,7 +32,7 @@ const scrollToContent = () => {
     window.scrollTo({ top, behavior: "smooth" })
 }
 
-// Technologies mises en avant sur l'accueil — choix manuel, à ajuster librement.
+// Technologies mises en avant sur l'accueil (choix manuel, à ajuster librement).
 const technologies: TechnologyEnum[] = [
     LanguagesEnum.TYPESCRIPT,
     FrameworksEnum.VUEJS,
