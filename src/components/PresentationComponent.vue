@@ -69,16 +69,16 @@ div#presentation > p#name {
     margin: var(--space-2) 0;
 }
 
+/* Passage en pile verticale dès qu'il n'y a plus la place pour deux colonnes. */
 @media (max-width: 600px) {
-    div#me > img {
-        max-width: 12rem;
-    }
-}
-
-@media (max-width: 400px) {
     div#container {
         flex-direction: column;
         gap: var(--space-6);
+        margin: var(--space-8) 0;
+    }
+
+    div#me > img {
+        max-width: 11rem;
     }
 }
 </style>
