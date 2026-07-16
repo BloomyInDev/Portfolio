@@ -22,7 +22,14 @@ usePageHead()
 const contentStart = ref<HTMLElement>()
 
 const scrollToContent = () => {
-    contentStart.value?.scrollIntoView({ behavior: "smooth" })
+    const target = contentStart.value
+    if (!target) return
+    // scrollIntoView place le haut de la section sous le header sticky. On calcule
+    // la position en retranchant la hauteur du header pour un rendu propre partout.
+    const header = document.querySelector("header")
+    const offset = (header?.offsetHeight ?? 0) + 16
+    const top = target.getBoundingClientRect().top + window.scrollY - offset
+    window.scrollTo({ top, behavior: "smooth" })
 }
 
 // Technologies mises en avant sur l'accueil — choix manuel, à ajuster librement.
