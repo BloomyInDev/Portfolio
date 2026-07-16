@@ -90,14 +90,18 @@ const numberOfItems = computed(() => props.items.length)
 }
 
 .bubble {
-    width: 1rem;
-    height: 1rem;
-    background-image: linear-gradient(115deg, #006eff 50%, #00f7ff);
+    width: 1.1rem;
+    height: 1.1rem;
+    background: var(--cyan-300);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 18, 51, 0.4);
     border-radius: 50%;
     position: relative;
-    transition: all 250ms ease-in-out;
+    transition: transform 250ms var(--ease);
 }
 
+/* Base offset nudges the dot onto the bar; hover only scales (from center) so
+   the dot grows in place without shifting. */
 .timeline > .container.right > .bubble {
     transform: translateX(-25%);
 }
@@ -106,17 +110,12 @@ const numberOfItems = computed(() => props.items.length)
     transform: translateX(25%);
 }
 
-.bubble:hover {
-    width: 2rem;
-    height: 2rem;
+.timeline > .container.right:hover > .bubble {
+    transform: translateX(-25%) scale(1.6);
 }
 
-.timeline > .container.right > .bubble:hover {
-    transform: translateX(-40%);
-}
-
-.timeline > .container.left > .bubble:hover {
-    transform: translateX(40%);
+.timeline > .container.left:hover > .bubble {
+    transform: translateX(25%) scale(1.6);
 }
 
 .content {
@@ -159,8 +158,8 @@ const numberOfItems = computed(() => props.items.length)
         transform: translateX(25%);
     }
 
-    .timeline > .container.right > .bubble:hover {
-        transform: translateX(40%);
+    .timeline > .container.right:hover > .bubble {
+        transform: translateX(25%) scale(1.6);
     }
 
     .timeline > .container.right {

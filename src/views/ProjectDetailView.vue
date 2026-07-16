@@ -50,15 +50,8 @@ usePageHead({
         <div id="back-to-projects-container">
             <RouterLink to="/projects" id="back-to-projects" title="Retour aux projets">
                 <ButtonComponent
-                    :proportional-paddings="false"
-                    :unrounded-corners="{
-                        topLeft: true,
-                        bottomLeft: true,
-                        topRight: false,
-                        bottomRight: false,
-                    }"
-                    ><FontAwesomeIcon :icon="faArrowLeft"
-                /></ButtonComponent>
+                    ><FontAwesomeIcon :icon="faArrowLeft" /> Retour aux projets</ButtonComponent
+                >
             </RouterLink>
         </div>
         <div id="content">
@@ -114,20 +107,14 @@ usePageHead({
 
 <style scoped>
 #back-to-projects-container {
+    max-width: 75rem;
+    margin: var(--space-6) auto 0;
+    padding: 0 var(--space-4);
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }
 #back-to-projects {
-    margin: 0.5rem 0;
-    display: inline-block;
-    width: 2.5rem;
+    display: inline-flex;
     text-decoration: none;
-    transition: width 0.25s ease-in-out;
-}
-
-#back-to-projects:hover {
-    width: 4rem;
 }
 
 div#content {
