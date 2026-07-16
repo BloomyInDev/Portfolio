@@ -13,19 +13,30 @@ import {
     type TechnologyEnum,
 } from "@/content/projects"
 import { usePageHead } from "@/lib/routing"
+import { ref } from "vue"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
 
 usePageHead()
 
-const techValues = new Set<string>([
-    ...Object.values(LanguagesEnum),
-    ...Object.values(FrameworksEnum),
-    ...Object.values(DatabasesEnum),
-    ...Object.values(ToolsEnum),
-])
+const contentStart = ref<HTMLElement>()
 
-const technologies = [...new Set(projects.flatMap((project) => project.knowledges))].filter(
-    (knowledge): knowledge is TechnologyEnum => techValues.has(knowledge as string),
-)
+const scrollToContent = () => {
+    contentStart.value?.scrollIntoView({ behavior: "smooth" })
+}
+
+// Technologies mises en avant sur l'accueil — choix manuel, à ajuster librement.
+const technologies: TechnologyEnum[] = [
+    LanguagesEnum.TYPESCRIPT,
+    FrameworksEnum.VUEJS,
+    LanguagesEnum.PHP,
+    LanguagesEnum.JAVA,
+    LanguagesEnum.GOLANG,
+    LanguagesEnum.SQL,
+    ToolsEnum.DOCKER,
+    ToolsEnum.GIT,
+    ToolsEnum.LINUX,
+]
 
 const featured = projects.slice(0, 3)
 </script>
@@ -35,8 +46,8 @@ const featured = projects.slice(0, 3)
         <section class="hero">
             <PresentationComponent />
             <p class="tagline">
-                Étudiant en BUT Informatique, passionné par le développement web et
-                l'auto-hébergement. Je construis des applications web modernes et j'administre mes
+                Étudiant en BUT Informatique, passionné par le développement applicatif et
+                l'auto-hébergement. Je construis des applications modernes et j'administre mes
                 propres serveurs.
             </p>
             <div class="buttons">
@@ -47,10 +58,14 @@ const featured = projects.slice(0, 3)
                     <RouterLink to="/about">À propos</RouterLink>
                 </ButtonComponent>
             </div>
+
+            <button class="scroll-cue" @click="scrollToContent" aria-label="Découvrir la suite">
+                <FontAwesomeIcon :icon="faChevronDown" />
+            </button>
         </section>
 
-        <section class="section">
-            <h2>Technologies</h2>
+        <section ref="contentStart" class="section">
+            <h2>Technologies utilisées</h2>
             <div class="tech-grid">
                 <TechnologiesComponent
                     v-for="tech in technologies"
@@ -76,7 +91,9 @@ const featured = projects.slice(0, 3)
                     </GlassCard>
                 </RouterLink>
             </div>
-            <RouterLink to="/projects" class="see-all">Voir tous les projets →</RouterLink>
+            <ButtonComponent class="see-all">
+                <RouterLink to="/projects">Voir tous les projets</RouterLink>
+            </ButtonComponent>
         </section>
     </div>
 </template>
@@ -91,10 +108,50 @@ const featured = projects.slice(0, 3)
 }
 
 .hero {
+    position: relative;
+    min-height: calc(100dvh - 3.5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    padding-bottom: var(--space-12);
+}
+
+.scroll-cue {
+    position: absolute;
+    bottom: var(--space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--surface-border);
+    background: var(--surface);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: scroll-bounce 1.8s var(--ease) infinite;
+    transition: background 250ms var(--ease);
+}
+
+.scroll-cue:hover {
+    background: var(--accent-strong);
+}
+
+@keyframes scroll-bounce {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(6px);
+    }
 }
 
 .tagline {
@@ -177,13 +234,6 @@ const featured = projects.slice(0, 3)
 }
 
 .see-all {
-    margin-top: var(--space-6);
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.see-all:hover {
-    text-decoration: underline;
+    margin-top: var(--space-8);
 }
 </style>

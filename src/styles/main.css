@@ -89,6 +89,22 @@ a {
     color: var(--accent);
 }
 
+/* Lien de contenu avec soulignement animé (repris de la page projet). */
+.animated-link {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    background-image: linear-gradient(var(--cyan-400), var(--cyan-400));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 400ms var(--ease);
+}
+
+.animated-link:hover {
+    background-size: 100% 2px;
+}
+
 ::selection {
     background: rgba(0, 247, 255, 0.3);
 }
