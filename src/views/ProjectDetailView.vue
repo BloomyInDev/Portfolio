@@ -64,11 +64,8 @@ usePageHead({
                     id="project-link"
                     title="Voir le projet"
                 >
-                    <ButtonComponent :proportional-paddings="true"
-                        ><FontAwesomeIcon
-                            :icon="faArrowUpRightFromSquare"
-                            size="xl" /></ButtonComponent
-                ></a>
+                    <FontAwesomeIcon :icon="faArrowUpRightFromSquare" /> Voir le projet
+                </a>
                 <h2>{{ projectInfo.title }}</h2>
                 <h3>{{ projectInfo.subtitle }}</h3>
                 <div id="technologies-list">
@@ -139,6 +136,28 @@ div#content {
 
 #project > #project-link {
     float: right;
+    margin: 0 0 var(--space-4) var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, var(--blue-500), var(--accent-strong));
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow-md);
+    transition:
+        transform 250ms var(--ease),
+        filter 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+}
+
+#project > #project-link:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: var(--shadow-lg);
 }
 
 #technologies-list,
