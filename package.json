@@ -9,7 +9,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "run-p type-check \"build-only {@}\" --",
+        "build": "pnpm run type-check && pnpm run build-only",
         "preview": "vite preview",
         "build-only": "vite-ssg build",
         "type-check": "vue-tsc --build",
@@ -22,15 +22,14 @@
         "@fortawesome/free-regular-svg-icons": "^7.1.0",
         "@fortawesome/free-solid-svg-icons": "^7.1.0",
         "@fortawesome/vue-fontawesome": "^3.1.2",
+        "@unhead/vue": "^3.0.4",
         "vue": "^3.5.22",
         "vue-markdown-render": "^2.3.0",
         "vue-router": "^5"
     },
     "devDependencies": {
         "@tsconfig/node22": "^22.0.2",
-        "@types/markdown-it": "^14.1.2",
         "@types/node": "^25.6.0",
-        "@unhead/vue": "^3.0.4",
         "@vitejs/plugin-vue": "^6.0.1",
         "@vue/eslint-config-prettier": "^10.2.0",
         "@vue/eslint-config-typescript": "^14.6.0",
@@ -38,7 +37,6 @@
         "eslint": "^10.2.0",
         "eslint-plugin-vue": "~10.8.0",
         "jiti": "^2.6.1",
-        "npm-run-all2": "^8.0.4",
         "prettier": "3.8.3",
         "sharp": "^0.34.5",
         "svgo": "^4.0.1",
