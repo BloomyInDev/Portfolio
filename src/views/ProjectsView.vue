@@ -27,5 +27,12 @@ usePageHead()
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0 var(--space-4);
+}
+
+#content > h2 {
+    font-size: var(--fs-xl);
+    margin: var(--space-8) 0 var(--space-12);
+    text-align: center;
 }
 </style>

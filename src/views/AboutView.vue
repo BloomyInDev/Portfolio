@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { usePageHead } from "@/lib/routing"
 import { computed } from "vue"
+import GlassCard from "@components/GlassCard.vue"
 
 const hash = computed(() => import.meta.env.VITE_GIT_COMMIT_HASH)
 const commitUrl = computed(() => `https://github.com/BloomyInDev/Portfolio/commit/${hash.value}`)
@@ -9,7 +10,7 @@ usePageHead()
 </script>
 
 <template>
-    <section>
+    <GlassCard class="about">
         <h2>A propos</h2>
         <p>Je m'appelle Bastien LUBEN</p>
         <p>
@@ -28,18 +29,30 @@ usePageHead()
             <a href="https://github.com/BloomyInDev/Portfolio" target="_blank">GitHub</a>. Hash de
             commit: <a :href="commitUrl">{{ hash }}</a>
         </p>
-    </section>
+    </GlassCard>
 </template>
 
 <style scoped>
-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.about {
+    width: min(44rem, 100% - 2rem);
+    margin: var(--space-12) auto;
+    padding: var(--space-8);
+    text-align: center;
+}
+
+.about > h2 {
+    font-size: var(--fs-xl);
+    margin: 0 0 var(--space-6);
+}
+
+.about > p {
+    color: var(--text-muted);
+    margin: var(--space-4) 0;
 }
 
 a {
-    color: #ffffff;
+    color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
 }
 </style>

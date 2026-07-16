@@ -2,6 +2,7 @@
 import { RouterLink } from "vue-router"
 import type { ITimeline } from "@/types"
 import { computed } from "vue"
+import GlassCard from "@components/GlassCard.vue"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { faCalendar } from "@fortawesome/free-solid-svg-icons"
 
@@ -20,11 +21,11 @@ const numberOfItems = computed(() => props.items.length)
             :class="['container', index % 2 === 0 ? 'left' : 'right']"
             :style="{ gridRow: (index + 1).toString() }"
         >
-            <div class="content">
+            <GlassCard class="content">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.description }}</p>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ item.dateToString }}</p>
-            </div>
+            </GlassCard>
             <span class="bubble"></span>
         </RouterLink>
     </div>
@@ -38,16 +39,16 @@ const numberOfItems = computed(() => props.items.length)
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: 0 1rem;
+    gap: 0 var(--space-4);
 }
 
 .timeline > .bar {
     grid-column: 2;
     grid-row: 1 / span v-bind(numberOfItems);
-    width: 0.5rem;
+    width: 0.4rem;
     height: 95%;
     content: "";
-    background-color: #ffffff;
+    background: linear-gradient(180deg, var(--blue-400), var(--blue-500));
     border-radius: 0.25rem;
     margin: 5%;
 }
@@ -60,7 +61,8 @@ const numberOfItems = computed(() => props.items.length)
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: -5rem;
+    /* Pull each row up so the alternating cards interleave. Tunable. */
+    margin-bottom: -4rem;
 }
 
 .timeline > .container:last-child {
@@ -118,10 +120,29 @@ const numberOfItems = computed(() => props.items.length)
 }
 
 .content {
-    background-color: #00275a80;
-    padding: 1rem;
-    border-radius: 1rem;
+    padding: var(--space-6);
     max-width: 20rem;
+    transition:
+        transform 250ms var(--ease),
+        border-color 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+}
+
+.timeline > .container:hover .content {
+    transform: translateY(-4px);
+    border-color: var(--surface-border-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.content > h2 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--fs-lg);
+}
+
+.content > p {
+    margin: var(--space-2) 0 0;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
 }
 
 @media (max-width: 900px) {

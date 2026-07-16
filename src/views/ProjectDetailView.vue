@@ -3,6 +3,7 @@ import { MethodsEnum, projectDateToString, projects, type TechnologyEnum } from 
 import { usePageHead } from "@/lib/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
+import GlassCard from "@components/GlassCard.vue"
 import TechnologiesComponent from "@components/TechnologiesComponent.vue"
 import {
     faArrowLeft,
@@ -62,7 +63,7 @@ usePageHead({
         </div>
         <div id="content">
             <p v-if="projectInfo === null">Ce projet n'existe pas.</p>
-            <div v-else id="project">
+            <GlassCard v-else id="project">
                 <a
                     v-if="projectInfo.projectUrl"
                     :href="projectInfo.projectUrl"
@@ -106,7 +107,7 @@ usePageHead({
                     :title="projectInfo.images[0]?.title"
                     id="project-image"
                 />
-            </div>
+            </GlassCard>
         </div>
     </div>
 </template>
@@ -135,19 +136,18 @@ div#content {
 }
 #project {
     max-width: 75rem;
-    margin: 2rem 0 0 0;
-    padding: 20px;
-    background-color: #00275a80;
-    border-radius: 2rem;
+    margin: var(--space-8) var(--space-4) 0;
+    padding: var(--space-8);
 }
 
 #project > h2 {
-    font-size: xx-large;
+    font-size: var(--fs-2xl);
     margin-top: 0;
 }
 
 #project > h3 {
-    font-size: x-large;
+    font-size: var(--fs-lg);
+    color: var(--text-muted);
 }
 
 #project > #project-link {
@@ -170,7 +170,7 @@ div#content {
 }
 
 #markdown {
-    line-height: 1.2;
+    line-height: 1.7;
 }
 
 #markdown :deep(a) {

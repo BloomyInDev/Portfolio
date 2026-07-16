@@ -61,11 +61,11 @@ const corners = computed(() => {
 }
 
 .proportinal-paddings {
-    padding: 0.5rem;
+    padding: 0.6rem;
 }
 
 .non-proportinal-paddings {
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.25rem;
 }
 
 .rounded-top-left {
@@ -101,17 +101,27 @@ const corners = computed(() => {
 }
 
 .btn {
-    border: none;
-    padding: 0.5rem;
-    background-color: #268fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(180deg, var(--blue-500), var(--accent-strong));
     color: #ffffff;
-    font-size: 1rem;
+    font-size: var(--fs-base);
+    font-weight: 600;
     cursor: pointer;
-    transition: all 250ms ease-in-out;
+    box-shadow: var(--shadow-md);
+    transition:
+        transform 250ms var(--ease),
+        box-shadow 250ms var(--ease),
+        filter 250ms var(--ease);
 }
 
 .btn:hover {
-    background-color: #0069da;
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 .btn > * {
