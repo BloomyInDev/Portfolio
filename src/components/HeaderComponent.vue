@@ -23,41 +23,56 @@ import { faHouse, faCircleInfo, faWrench } from "@fortawesome/free-solid-svg-ico
 
 <style scoped>
 header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     margin: 0;
-    background-color: #00275a80;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--surface-border);
 }
 
 header > h1 {
-    font-size: 2.25rem;
+    font-size: var(--fs-lg);
+    font-weight: 700;
     margin: 0;
-    padding: 0.5rem;
+    padding: var(--space-3) var(--space-4);
 }
 
 header > nav {
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin: 0 1rem;
+    gap: var(--space-2);
+    margin: 0 var(--space-3);
 }
 
 header > nav > a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
-    transition: all 250ms ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-md);
+    transition:
+        color 250ms var(--ease),
+        background-color 250ms var(--ease);
 }
 
 header > nav > a:hover {
-    color: #0099ff;
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-@media (max-width: 600px) {
-    header > h1 {
-        font-size: 1.5rem;
-    }
+header > nav > a.router-link-exact-active {
+    color: var(--cyan-300);
+    background: rgba(0, 247, 255, 0.12);
 }
 </style>

@@ -32,14 +32,19 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 </template>
 <style scoped>
 footer {
-    margin: 0;
-    margin-top: 1rem;
-    padding: 0 1rem;
-    background-color: #00275a80;
-    color: #ffffff;
+    margin: var(--space-12) 0 0;
+    padding: var(--space-3) var(--space-6);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    gap: var(--space-4);
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--surface-border);
 }
 
 footer > div#links {
@@ -47,26 +52,43 @@ footer > div#links {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-2);
 }
 
 footer > div#links > a {
-    color: #ffffff;
+    color: var(--text);
     text-decoration: none;
-    transition: all 250ms ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-md);
+    transition:
+        color 250ms var(--ease),
+        background-color 250ms var(--ease),
+        transform 250ms var(--ease);
 }
 
 footer > div#links > a:hover {
-    color: #0099ff;
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+footer > p {
+    margin: 0;
 }
 
 footer > p > a {
-    color: #ffffff;
+    color: var(--text);
 }
 
 @media (max-width: 600px) {
-    footer > div#links {
-        gap: 0.5rem;
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-2);
     }
 }
 </style>
