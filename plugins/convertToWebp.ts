@@ -1,10 +1,10 @@
 import { globSync } from "node:fs"
-import sharp from "sharp"
+import sharp, { type WebpOptions } from "sharp"
 import path from "node:path"
 import { access, mkdir, rm } from "node:fs/promises"
 import { PluginOption } from "vite"
 
-const plugin: (webpOptions: sharp.WebpOptions) => PluginOption = (webpOptions) => {
+const plugin: (webpOptions: WebpOptions) => PluginOption = (webpOptions) => {
     const generated: string[] = []
     const cacheRoot = path.resolve(process.cwd(), ".vite-webp-cache")
 

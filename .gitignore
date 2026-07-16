@@ -38,3 +38,4 @@ __screenshots__/
 # Custom
 .vite-webp-cache/
 .playwright-mcp/
+.vite-ssg-temp/
