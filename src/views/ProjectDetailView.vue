@@ -3,6 +3,7 @@ import { MethodsEnum, projectDateToString, projects, type TechnologyEnum } from 
 import { usePageHead } from "@/lib/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
+import GlassCard from "@components/GlassCard.vue"
 import TechnologiesComponent from "@components/TechnologiesComponent.vue"
 import {
     faArrowLeft,
@@ -49,20 +50,13 @@ usePageHead({
         <div id="back-to-projects-container">
             <RouterLink to="/projects" id="back-to-projects" title="Retour aux projets">
                 <ButtonComponent
-                    :proportional-paddings="false"
-                    :unrounded-corners="{
-                        topLeft: true,
-                        bottomLeft: true,
-                        topRight: false,
-                        bottomRight: false,
-                    }"
-                    ><FontAwesomeIcon :icon="faArrowLeft"
-                /></ButtonComponent>
+                    ><FontAwesomeIcon :icon="faArrowLeft" /> Retour aux projets</ButtonComponent
+                >
             </RouterLink>
         </div>
         <div id="content">
             <p v-if="projectInfo === null">Ce projet n'existe pas.</p>
-            <div v-else id="project">
+            <GlassCard v-else id="project">
                 <a
                     v-if="projectInfo.projectUrl"
                     :href="projectInfo.projectUrl"
@@ -70,11 +64,8 @@ usePageHead({
                     id="project-link"
                     title="Voir le projet"
                 >
-                    <ButtonComponent :proportional-paddings="true"
-                        ><FontAwesomeIcon
-                            :icon="faArrowUpRightFromSquare"
-                            size="xl" /></ButtonComponent
-                ></a>
+                    <FontAwesomeIcon :icon="faArrowUpRightFromSquare" /> Voir le projet
+                </a>
                 <h2>{{ projectInfo.title }}</h2>
                 <h3>{{ projectInfo.subtitle }}</h3>
                 <div id="technologies-list">
@@ -106,27 +97,21 @@ usePageHead({
                     :title="projectInfo.images[0]?.title"
                     id="project-image"
                 />
-            </div>
+            </GlassCard>
         </div>
     </div>
 </template>
 
 <style scoped>
 #back-to-projects-container {
+    max-width: 75rem;
+    margin: var(--space-6) auto 0;
+    padding: 0 var(--space-4);
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }
 #back-to-projects {
-    margin: 0.5rem 0;
-    display: inline-block;
-    width: 2.5rem;
+    display: inline-flex;
     text-decoration: none;
-    transition: width 0.25s ease-in-out;
-}
-
-#back-to-projects:hover {
-    width: 4rem;
 }
 
 div#content {
@@ -135,23 +120,44 @@ div#content {
 }
 #project {
     max-width: 75rem;
-    margin: 2rem 0 0 0;
-    padding: 20px;
-    background-color: #00275a80;
-    border-radius: 2rem;
+    margin: var(--space-8) var(--space-4) 0;
+    padding: var(--space-8);
 }
 
 #project > h2 {
-    font-size: xx-large;
+    font-size: var(--fs-2xl);
     margin-top: 0;
 }
 
 #project > h3 {
-    font-size: x-large;
+    font-size: var(--fs-lg);
+    color: var(--text-muted);
 }
 
 #project > #project-link {
     float: right;
+    margin: 0 0 var(--space-4) var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.6rem 1.1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, var(--blue-500), var(--accent-strong));
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow-md);
+    transition:
+        transform 250ms var(--ease),
+        filter 250ms var(--ease),
+        box-shadow 250ms var(--ease);
+}
+
+#project > #project-link:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: var(--shadow-lg);
 }
 
 #technologies-list,
@@ -170,7 +176,7 @@ div#content {
 }
 
 #markdown {
-    line-height: 1.2;
+    line-height: 1.7;
 }
 
 #markdown :deep(a) {

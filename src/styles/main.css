@@ -1,19 +1,135 @@
 :root {
-    background-image: linear-gradient(115deg, #004094 50%, #00f7ff);
-    font-family: "Fira Sans", sans-serif;
-    color: white;
+    /* ---- Palette (kept from original identity) ---- */
+    --blue-950: #001233;
+    --blue-900: #001d47;
+    --blue-800: #002a6b;
+    --blue-700: #004094;
+    --blue-500: #268fff;
+    --blue-400: #0099ff;
+    --cyan-400: #00c8d6;
+    --cyan-300: #00f7ff;
 
-    /** Define CSS variables for consistent theming **/
+    /* ---- Semantic tokens ---- */
+    --accent: var(--blue-400);
+    --accent-strong: var(--blue-500);
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.72);
+
+    /* Glass surfaces (derived from the old #00275a80) */
+    --surface: rgba(0, 39, 90, 0.45);
+    --surface-strong: rgba(0, 39, 90, 0.68);
+    --surface-border: rgba(255, 255, 255, 0.14);
+    --surface-border-hover: rgba(0, 247, 255, 0.45);
+
+    /* ---- Spacing scale ---- */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+
+    /* ---- Radii ---- */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* ---- Fluid type scale ---- */
+    --fs-sm: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+    --fs-base: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    --fs-lg: clamp(1.15rem, 1rem + 0.6vw, 1.4rem);
+    --fs-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+    --fs-2xl: clamp(2rem, 1.5rem + 2.4vw, 3.25rem);
+    --fs-3xl: clamp(2.5rem, 1.8rem + 3.6vw, 4.5rem);
+
+    /* ---- Elevation ---- */
+    --shadow-md: 0 8px 24px rgba(0, 18, 51, 0.35);
+    --shadow-lg: 0 16px 48px rgba(0, 18, 51, 0.45);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
     --phone-width: 600px;
+
+    font-family: "Fira Sans", system-ui, sans-serif;
+    color: var(--text);
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
     min-height: 100vh;
     margin: 0;
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    /* Smooth blue -> cyan gradient (same palette, no hard band) + depth glow */
+    background:
+        radial-gradient(1100px 700px at 12% 8%, rgba(0, 247, 255, 0.16), transparent 60%),
+        radial-gradient(900px 600px at 90% 100%, rgba(38, 143, 255, 0.18), transparent 55%),
+        linear-gradient(145deg, var(--blue-950) 0%, var(--blue-700) 48%, #0a6ea8 76%, var(--cyan-400) 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 div#app {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+}
+
+a {
+    color: var(--accent);
+}
+
+/* Lien de contenu avec soulignement animé (repris de la page projet). */
+.animated-link {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    background-image: linear-gradient(var(--cyan-400), var(--cyan-400));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 400ms var(--ease);
+}
+
+.animated-link:hover {
+    background-size: 100% 2px;
+}
+
+::selection {
+    background: rgba(0, 247, 255, 0.3);
+}
+
+/* Visible, modern focus ring for keyboard users */
+:focus-visible {
+    outline: 2px solid var(--cyan-300);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
