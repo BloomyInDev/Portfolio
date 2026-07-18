@@ -33,7 +33,6 @@ header {
     align-items: center;
     background: var(--surface);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--surface-border);
 }
 

@@ -136,7 +136,6 @@ const featured = projects.slice(0, 3)
     border: 1px solid var(--surface-border);
     background: var(--surface);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     color: var(--text);
     font-size: 1.1rem;
     cursor: pointer;

@@ -40,6 +40,10 @@ process.env.VITE_GIT_COMMIT_HASH = child.execSync("git rev-parse --short HEAD").
 export default {
     build: {
         minify: "oxc",
+        // safari15/ios15 force lightningcss to keep the -webkit-backdrop-filter
+        // fallback instead of dropping it; chrome/firefox/edge just set a recent
+        // modern baseline for everything else
+        cssTarget: ["safari15", "ios15", "chrome120", "firefox120", "edge120"],
     },
     plugins: [
         vue(),

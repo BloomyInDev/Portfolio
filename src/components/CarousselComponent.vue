@@ -128,7 +128,6 @@ onUnmounted(() => {
     transform: translateY(-50%);
     background: var(--surface-strong);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--surface-border);
     color: #ffffff;
     cursor: pointer;
@@ -167,7 +166,6 @@ onUnmounted(() => {
     font-size: var(--fs-sm);
     background: var(--surface-strong);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--surface-border);
 }
 
