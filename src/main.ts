@@ -3,6 +3,7 @@ import { ViteSSG } from "vite-ssg"
 import App from "./App.vue"
 import "./styles/main.css"
 import type { CustomRouteMetadata } from "./types"
+import { setupViewTransitions } from "./lib/viewTransitions"
 
 export const createApp = ViteSSG(
     App,
@@ -97,6 +98,8 @@ export const createApp = ViteSSG(
             },
         ],
     },
-    (_modules) => {},
+    (ctx) => {
+        if (!import.meta.env.SSR) setupViewTransitions(ctx.router)
+    },
     {},
 )

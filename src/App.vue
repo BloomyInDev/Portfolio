@@ -2,6 +2,7 @@
 import FooterComponent from "@components/FooterComponent.vue"
 import HeaderComponent from "@components/HeaderComponent.vue"
 import { RouterView, useRoute } from "vue-router"
+import { supportsViewTransitions } from "@/lib/viewTransitions"
 
 const route = useRoute()
 </script>
@@ -10,7 +11,8 @@ const route = useRoute()
     <HeaderComponent />
     <main>
         <RouterView v-slot="{ Component }">
-            <Transition name="fade" mode="out-in">
+            <component v-if="supportsViewTransitions" :is="Component" :key="route.path" />
+            <Transition v-else name="fade" mode="out-in">
                 <component :is="Component" :key="route.path" />
             </Transition>
         </RouterView>

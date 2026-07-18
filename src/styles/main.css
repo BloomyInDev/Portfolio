@@ -123,6 +123,40 @@ h3 {
     letter-spacing: -0.02em;
 }
 
+/* View Transition API : seul <main> change entre les routes, header et footer
+   restent statiques. On neutralise donc le cross-fade par defaut de la racine
+   et on anime uniquement le contenu de page. */
+main {
+    view-transition-name: page-content;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+}
+
+::view-transition-old(page-content) {
+    animation: vt-leave 150ms var(--ease) both;
+}
+
+::view-transition-new(page-content) {
+    animation: vt-enter 220ms 80ms var(--ease) both;
+}
+
+@keyframes vt-leave {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes vt-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -131,5 +165,11 @@ h3 {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
     }
 }
