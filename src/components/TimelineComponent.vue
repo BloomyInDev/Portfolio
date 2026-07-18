@@ -100,22 +100,24 @@ const numberOfItems = computed(() => props.items.length)
     transition: transform 250ms var(--ease);
 }
 
-/* Base offset nudges the dot onto the bar; hover only scales (from center) so
-   the dot grows in place without shifting. */
+/* Base offset centers the dot on the bar: the container edge sits flush with
+   the bar edge, so the dot must shift by half its width minus half the bar
+   width (0.2rem). Hover only scales (from center) so the dot grows in place
+   without shifting. */
 .timeline > .container.right > .bubble {
-    transform: translateX(-25%);
+    transform: translateX(calc(-50% + 0.2rem));
 }
 
 .timeline > .container.left > .bubble {
-    transform: translateX(25%);
+    transform: translateX(calc(50% - 0.2rem));
 }
 
 .timeline > .container.right:hover > .bubble {
-    transform: translateX(-25%) scale(1.6);
+    transform: translateX(calc(-50% + 0.2rem)) scale(1.6);
 }
 
 .timeline > .container.left:hover > .bubble {
-    transform: translateX(25%) scale(1.6);
+    transform: translateX(calc(50% - 0.2rem)) scale(1.6);
 }
 
 .content {
@@ -155,11 +157,11 @@ const numberOfItems = computed(() => props.items.length)
     }
 
     .timeline > .container.right > .bubble {
-        transform: translateX(25%);
+        transform: translateX(calc(50% - 0.2rem));
     }
 
     .timeline > .container.right:hover > .bubble {
-        transform: translateX(25%) scale(1.6);
+        transform: translateX(calc(50% - 0.2rem)) scale(1.6);
     }
 
     .timeline > .container.right {
