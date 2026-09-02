@@ -24,6 +24,10 @@ export enum FrameworksEnum {
 
 export enum DatabasesEnum {
     POSTGRESQL = "PostgreSQL",
+    MARIADB = "MariaDB",
+    MONGODB = "MongoDB",
+    ORACLEDB = "Oracle Database",
+    SQLITE = "SQLite",
 }
 
 export enum ToolsEnum {

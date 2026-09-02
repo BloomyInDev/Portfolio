@@ -84,6 +84,14 @@ const iconConfig = computed((): IconConfig => {
             return makeIconConfig("bootstrap.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
         case DatabasesEnum.POSTGRESQL:
             return makeIconConfig("postgresql.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
+        case DatabasesEnum.MARIADB:
+            return makeIconConfig("mariadb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
+        case DatabasesEnum.MONGODB:
+            return makeIconConfig("mongodb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
+        case DatabasesEnum.ORACLEDB:
+            return makeIconConfig("oracle.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
+        case DatabasesEnum.SQLITE:
+            return makeIconConfig("sqlite.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
         case ToolsEnum.LINUX:
             return makeIconConfig("linux.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
         case ToolsEnum.GIT:
