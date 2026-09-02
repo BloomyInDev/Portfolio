@@ -1,6 +1,10 @@
 // Base imports
 import { ViteSSG } from "vite-ssg"
 import App from "./App.vue"
+import AboutView from "@views/AboutView.vue"
+import HomeView from "@views/HomeView.vue"
+import NotFoundView from "@views/NotFoundView.vue"
+import ProjectsView from "@views/ProjectsView.vue"
 import "./styles/main.css"
 import type { CustomRouteMetadata } from "./types"
 import { setupStaleChunkReload } from "./lib/staleChunkReload"
@@ -12,7 +16,7 @@ export const createApp = ViteSSG(
         routes: [
             {
                 path: "/",
-                component: () => import("@views/HomeView.vue"),
+                component: HomeView,
                 meta: {
                     title: { default: true },
                     description: { default: true },
@@ -21,7 +25,7 @@ export const createApp = ViteSSG(
             },
             {
                 path: "/about",
-                component: () => import("@views/AboutView.vue"),
+                component: AboutView,
                 meta: {
                     title: {
                         default: false,
@@ -35,7 +39,7 @@ export const createApp = ViteSSG(
             },
             {
                 path: "/projects",
-                component: () => import("@views/ProjectsView.vue"),
+                component: ProjectsView,
                 meta: {
                     title: {
                         default: false,
@@ -54,6 +58,10 @@ export const createApp = ViteSSG(
             {
                 name: "project-detail",
                 path: "/project/:projectName",
+                // Seule vue encore chargée à la demande : elle embarque le rendu
+                // markdown (~46 Ko gzip), inutile pour qui ne consulte aucun projet.
+                // Les autres vues sont dans le bundle principal pour que leurs liens
+                // ne dépendent d'aucune requête réseau (voir lib/staleChunkReload).
                 component: () => import("@views/ProjectDetailView.vue"),
                 meta: {
                     title: {
@@ -78,7 +86,7 @@ export const createApp = ViteSSG(
             },
             {
                 path: "/404",
-                component: () => import("@views/NotFoundView.vue"),
+                component: NotFoundView,
                 meta: {
                     title: {
                         default: false,
