@@ -7,7 +7,7 @@ export default {
     title: "Stage chez Dmoti",
     subtitle:
         "Stage de développement web chez Dmoti, une entreprise spécialisée dans la Gestion Technique des Batiments (GTB)",
-    published: false,
+    published: true,
     description: [
         "J'ai eu la chance de réaliser mon stage chez Dmoti, une entreprise spécialisée dans la Gestion Technique des Batiments (GTB).",
         "Le besoin de départ était simple: mettre à jour le site web existant de l'entreprise et y ajouter des nouvelles fonctionalités.",
