@@ -13,7 +13,7 @@ export default {
         "Le besoin de départ était simple: mettre à jour le site web existant de l'entreprise et y ajouter des nouvelles fonctionalités.",
         "Le stage s'est décomposé en deux projets menés de bout en bout, avec des points d'étape réguliers auprès de la gérante.",
         "",
-        "**Refonte du site vitrine**, resté figé depuis 2019 sous WordPress (constructeur SiteOrigin) et avec des scores Lighthouse dégradés par l'accumulation de plugins. L'approche initiale envisageait un site statique Vue.js séparé de WordPress, mais elle a été abandonnée au profit d'un thème WordPress natif : l'équipe Dmoti devait pouvoir modifier textes, images et projets en autonomie, sans dépendre d'un développeur ni d'un hébergement supplémentaire.",
+        "**Refonte du site vitrine**, resté figé depuis 2019 sous WordPress (constructeur SiteOrigin) et avec des scores Lighthouse dégradés par l'accumulation de plugins. L'approche initiale envisageait un site statique Vue.js séparé de WordPress, mais elle a été abandonnée au profit d'un thème WordPress natif : l'équipe Dmoti doit pouvoir modifier textes, images et projets en autonomie, sans dépendre d'un développeur ni d'un hébergement supplémentaire.",
         "J'ai développé un thème sur mesure avec Sage 11 (moteur Blade, build Vite) et une vingtaine de blocs Gutenberg (hero, grille de services, carrousel de projets...) permettant à l'équipe de modifier le contenu en autonomie, ainsi qu'un plugin dédié (architecture orientée objet, injection de dépendances PHP-DI conforme PSR-11, découverte automatique des routes via attributs PHP 8 façon Symfony, templates Twig) intégrant un chatbot IA venu remplacer un plugin tiers limité (AI Engine, GPT-3.5).",
         "",
         [

@@ -28,6 +28,7 @@ export default {
         technologies.languages.CSS,
         technologies.languages.JAVASCRIPT,
         technologies.languages.SQL,
+        technologies.databases.MARIADB,
         technologies.tools.GIT,
         types.methods.OOP,
         types.methods.AGILE,

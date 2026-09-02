@@ -28,7 +28,7 @@ export default {
         "",
         "Côté fonctionnalités, l'application permet la saisie des heures par client et par tâche, la définition d'objectifs quotidiens, la génération de rapports imprimables filtrables par dates, ainsi qu'une interface bilingue français/anglais.",
         "",
-        "C'était mon premier vrai projet en Go et l'occasion de découvrir `templ`, tout en remplaçant un suivi Excel désormais utilisé au quotidien. C'est un projet que je continue de faire évoluer en fonction des demandes et des besoins.",
+        "C'était mon premier vrai projet en Go et l'occasion de découvrir `templ`, tout en remplaçant un suivi Excel anciennement utilisé. C'est un projet que je continue de faire évoluer en fonction des demandes et des besoins.",
     ],
     newFormat: true,
     dates: {
@@ -39,6 +39,7 @@ export default {
         technologies.languages.GOLANG,
         technologies.languages.JAVASCRIPT,
         technologies.languages.SQL,
+        technologies.databases.SQLITE,
         technologies.tools.DOCKER,
         technologies.tools.GIT,
         technologies.tools.GITHUB,
