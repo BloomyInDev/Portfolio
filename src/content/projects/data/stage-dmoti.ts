@@ -44,6 +44,7 @@ export default {
     knowledges: [
         technologies.languages.PHP,
         technologies.languages.TYPESCRIPT,
+        technologies.languages.SQL,
         technologies.frameworks.VUEJS,
         technologies.frameworks.NESTJS,
         technologies.databases.POSTGRESQL,
