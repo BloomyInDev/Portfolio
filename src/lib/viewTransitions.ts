@@ -5,10 +5,10 @@ export const supportsViewTransitions =
     typeof document !== "undefined" && "startViewTransition" in document
 
 /**
- * Anime les changements de route avec la View Transition API.
- * Le navigateur capture l'ancien état dans beforeResolve, puis la promesse
- * passée à startViewTransition n'est résolue qu'une fois le nouveau composant
- * rendu (afterEach + nextTick), pour que le navigateur capture le bon état final.
+ * Animates route changes with the View Transition API.
+ * The browser captures the old state in beforeResolve, then the promise handed to
+ * startViewTransition only resolves once the new component is rendered
+ * (afterEach + nextTick), so the browser captures the right final state.
  */
 export function setupViewTransitions(router: Router) {
     if (!supportsViewTransitions) return

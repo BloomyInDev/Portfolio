@@ -58,10 +58,10 @@ export const createApp = ViteSSG(
             {
                 name: "project-detail",
                 path: "/project/:projectName",
-                // Seule vue encore chargée à la demande : elle embarque le rendu
-                // markdown (~46 Ko gzip), inutile pour qui ne consulte aucun projet.
-                // Les autres vues sont dans le bundle principal pour que leurs liens
-                // ne dépendent d'aucune requête réseau (voir lib/staleChunkReload).
+                // The only view still loaded on demand: it carries the markdown
+                // renderer (~46 kB gzip), useless to anyone who opens no project.
+                // The other views sit in the main bundle so their links depend on
+                // no network request (see lib/staleChunkReload).
                 component: () => import("@views/ProjectDetailView.vue"),
                 meta: {
                     title: {

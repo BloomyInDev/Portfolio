@@ -1,20 +1,18 @@
 import type { Router } from "vue-router"
 
-/** Chemin dont le rechargement a déjà été tenté, pour ne pas boucler. */
+/** Path we already tried reloading, so we don't loop. */
 const ATTEMPT_KEY = "stale-chunk-reload"
 
 /**
- * Un déploiement remplace tout le contenu de dist : les chunks de route
- * (ProjectsView-<hash>.js, son CSS…) référencés par un onglet déjà ouvert
- * disparaissent. Le chargement échoue, vue-router abandonne la navigation en
- * silence, et le clic semble sans effet. Seul un rechargement complet, qui va
- * chercher le nouvel index.html, remet l'onglet d'aplomb.
+ * A deploy replaces the whole of dist: the route chunks (ProjectsView-<hash>.js,
+ * its CSS...) an already-open tab points at are gone. Loading fails, vue-router
+ * silently abandons the navigation, and the click looks like it did nothing. Only
+ * a full reload, which fetches the new index.html, sets the tab straight again.
  *
- * Vite échoue de deux façons distinctes, d'où l'écoute de vite:preloadError qui
- * couvre les deux sans dépendre du libellé de l'erreur, propre à chaque
- * navigateur :
- *  - le CSS de la route ne se charge pas, rejeté avant même l'import() ;
- *  - l'import() du chunk lui-même échoue.
+ * Vite fails in two distinct ways, hence listening to vite:preloadError, which
+ * covers both without depending on the error message, browser-specific as it is:
+ *  - the route's CSS does not load, rejected before the import() even runs;
+ *  - the import() of the chunk itself fails.
  */
 export function setupStaleChunkReload(router: Router) {
     let preloadFailed = false

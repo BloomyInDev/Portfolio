@@ -89,7 +89,7 @@ a {
     color: var(--accent);
 }
 
-/* Lien de contenu avec soulignement animé (repris de la page projet). */
+/* Body link with an animated underline (taken from the project page). */
 .animated-link {
     color: var(--text);
     text-decoration: none;
@@ -123,9 +123,9 @@ h3 {
     letter-spacing: -0.02em;
 }
 
-/* View Transition API : seul <main> change entre les routes, header et footer
-   restent statiques. On neutralise donc le cross-fade par defaut de la racine
-   et on anime uniquement le contenu de page. */
+/* View Transition API: only <main> changes between routes, header and footer stay
+   put. So we neutralise the root's default cross-fade and animate the page content
+   alone. */
 main {
     view-transition-name: page-content;
 }

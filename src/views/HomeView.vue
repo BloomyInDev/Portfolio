@@ -21,15 +21,15 @@ const contentStart = ref<HTMLElement>()
 const scrollToContent = () => {
     const target = contentStart.value
     if (!target) return
-    // scrollIntoView place le haut de la section sous le header sticky. On calcule
-    // la position en retranchant la hauteur du header pour un rendu propre partout.
+    // scrollIntoView puts the top of the section under the sticky header. We work
+    // out the position by subtracting the header height, so it lands cleanly.
     const header = document.querySelector("header")
     const offset = (header?.offsetHeight ?? 0) + 16
     const top = target.getBoundingClientRect().top + window.scrollY - offset
     window.scrollTo({ top, behavior: "smooth" })
 }
 
-// Technologies mises en avant sur l'accueil (choix manuel, à ajuster librement).
+// Technologies highlighted on the home page (hand-picked, tweak at will).
 const highlightedTechnologies: TechnologyEnum[] = [
     technologies.languages.TYPESCRIPT,
     technologies.frameworks.VUEJS,

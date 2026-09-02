@@ -14,10 +14,10 @@ usePageHead()
 const hash = computed(() => import.meta.env.VITE_GIT_COMMIT_HASH)
 const commitUrl = computed(() => `https://github.com/BloomyInDev/Portfolio/commit/${hash.value}`)
 
-// Technologies réellement rencontrées dans les projets.
+// Technologies actually met with across the projects.
 const usedTechnologies = new Set(projects.flatMap((project) => project.knowledges))
 
-// Compétences groupées par catégorie, en ne gardant que celles utilisées.
+// Skills grouped by category, keeping only the ones in use.
 const categoryLabels: Record<keyof typeof technologies, string> = {
     languages: "Langages",
     frameworks: "Frameworks & bibliothèques",
@@ -46,7 +46,7 @@ const stats = [
     { value: languagesCount, label: "Langages" },
 ]
 
-// Parcours saisi à la main (période, intitulé, détail).
+// Background entered by hand (period, title, detail).
 type TimelineEntry = { period: string; title: string; detail: string }
 
 const education: TimelineEntry[] = [

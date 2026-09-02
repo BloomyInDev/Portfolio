@@ -69,7 +69,7 @@ div#presentation > p#name {
     margin: var(--space-2) 0;
 }
 
-/* Passage en pile verticale dès qu'il n'y a plus la place pour deux colonnes. */
+/* Stack vertically as soon as there is no room left for two columns. */
 @media (max-width: 600px) {
     div#container {
         flex-direction: column;
