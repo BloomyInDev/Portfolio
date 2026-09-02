@@ -48,11 +48,7 @@ enum ServicesEnum {
 }
 
 export type TechnologyEnum =
-    | LanguagesEnum
-    | FrameworksEnum
-    | DatabasesEnum
-    | ToolsEnum
-    | ServicesEnum
+    LanguagesEnum | FrameworksEnum | DatabasesEnum | ToolsEnum | ServicesEnum
 
 // The keys double as the folder names under `src/assets/technologies/`.
 export default {

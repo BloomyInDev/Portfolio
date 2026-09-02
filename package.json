@@ -37,7 +37,7 @@
         "eslint": "^10.9.1",
         "eslint-plugin-vue": "~10.10.0",
         "jiti": "^2.7.0",
-        "prettier": "3.8.3",
+        "prettier": "3.9.6",
         "sharp": "^0.35.4",
         "svgo": "^4.1.0",
         "typescript": "~6.0.3",
