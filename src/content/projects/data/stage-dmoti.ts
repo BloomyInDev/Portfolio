@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { DatabasesEnum, FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Stage chez Dmoti",
@@ -41,19 +42,19 @@ export default {
         end: createDate({ day: 3, month: MonthEnum.July, year: 2026 }),
     },
     knowledges: [
-        LanguagesEnum.PHP,
-        LanguagesEnum.TYPESCRIPT,
-        FrameworksEnum.VUEJS,
-        FrameworksEnum.NESTJS,
-        DatabasesEnum.POSTGRESQL,
-        ToolsEnum.GIT,
-        ToolsEnum.DOCKER,
-        ToolsEnum.WORDPRESS,
-        ToolsEnum.MONDAY,
-        ToolsEnum.OVH,
-        MethodsEnum.AGILE,
-        MethodsEnum.SELF_LEARNING,
+        technologies.languages.PHP,
+        technologies.languages.TYPESCRIPT,
+        technologies.frameworks.VUEJS,
+        technologies.frameworks.NESTJS,
+        technologies.databases.POSTGRESQL,
+        technologies.tools.GIT,
+        technologies.tools.DOCKER,
+        technologies.tools.WORDPRESS,
+        technologies.tools.MONDAY,
+        technologies.tools.OVH,
+        types.methods.AGILE,
+        types.methods.SELF_LEARNING,
     ],
     newFormat: true,
-    type: ProjectTypeEnum.PROFESSIONAL,
+    type: types.projectTypes.PROFESSIONAL,
 } satisfies IIncompleteProject

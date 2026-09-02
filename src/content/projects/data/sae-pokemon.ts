@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "SAÉ Pokémon",
@@ -14,13 +15,13 @@ export default {
         "J'ai travaillé sur ce projet avec [Natan Cantié](https://www.linkedin.com/in/natan-cantie-018550347/).",
     ],
     newFormat: false,
-    type: ProjectTypeEnum.ACADEMIC,
+    type: types.projectTypes.ACADEMIC,
     knowledges: [
-        LanguagesEnum.JAVA,
-        FrameworksEnum.JAVAFX,
-        ToolsEnum.GIT,
-        MethodsEnum.OOP,
-        MethodsEnum.UML,
+        technologies.languages.JAVA,
+        technologies.frameworks.JAVAFX,
+        technologies.tools.GIT,
+        types.methods.OOP,
+        types.methods.UML,
     ],
     images: [
         {

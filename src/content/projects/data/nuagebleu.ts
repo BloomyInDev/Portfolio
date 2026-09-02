@@ -1,6 +1,7 @@
 import { createDate, MonthEnum } from "../date"
-import { DatabasesEnum, FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "NuageBleu",
@@ -31,19 +32,19 @@ export default {
         end: createDate({ month: MonthEnum.January, year: 2026 }),
     },
     knowledges: [
-        LanguagesEnum.TYPESCRIPT,
-        LanguagesEnum.JAVASCRIPT,
-        LanguagesEnum.SQL,
-        FrameworksEnum.SVELTE,
-        FrameworksEnum.TAILWINDCSS,
-        DatabasesEnum.POSTGRESQL,
-        ToolsEnum.NODEJS,
-        ToolsEnum.DOCKER,
-        ToolsEnum.GIT,
-        ToolsEnum.LINUX,
-        MethodsEnum.OOP,
-        MethodsEnum.SELF_LEARNING,
+        technologies.languages.TYPESCRIPT,
+        technologies.languages.JAVASCRIPT,
+        technologies.languages.SQL,
+        technologies.frameworks.SVELTE,
+        technologies.frameworks.TAILWINDCSS,
+        technologies.databases.POSTGRESQL,
+        technologies.tools.NODEJS,
+        technologies.tools.DOCKER,
+        technologies.tools.GIT,
+        technologies.tools.LINUX,
+        types.methods.OOP,
+        types.methods.SELF_LEARNING,
     ],
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     projectUrl: "https://nuagebleu.fr",
 } satisfies IIncompleteProject

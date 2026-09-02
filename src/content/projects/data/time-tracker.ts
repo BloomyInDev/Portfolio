@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Time Tracker",
@@ -33,15 +34,15 @@ export default {
     dates: {
         start: createDate({ month: MonthEnum.July, year: 2026 }),
     },
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     knowledges: [
-        LanguagesEnum.GOLANG,
-        LanguagesEnum.JAVASCRIPT,
-        LanguagesEnum.SQL,
-        ToolsEnum.DOCKER,
-        ToolsEnum.GIT,
-        ToolsEnum.GITHUB,
-        MethodsEnum.SELF_LEARNING,
+        technologies.languages.GOLANG,
+        technologies.languages.JAVASCRIPT,
+        technologies.languages.SQL,
+        technologies.tools.DOCKER,
+        technologies.tools.GIT,
+        technologies.tools.GITHUB,
+        types.methods.SELF_LEARNING,
     ],
     projectUrl: "https://github.com/BloomyInDev/time-tracker",
 } satisfies IIncompleteProject

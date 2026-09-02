@@ -1,7 +1,8 @@
 import { MonthEnum, createDate } from "../date"
 import { projectNameToId } from "../slug"
-import { ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Homelab",
@@ -61,9 +62,9 @@ export default {
         "Le tout derrière une Livebox 5, que je prévois de remplacer par un vrai routeur dans un futur proche. Cela permettera de déplacer certains services réseau dessus (DNS, Wireguard, ...)",
     ],
     newFormat: true,
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     dates: {
         start: createDate({ month: MonthEnum.December, year: 2024 }),
     },
-    knowledges: [ToolsEnum.LINUX, ToolsEnum.DOCKER, MethodsEnum.SELF_LEARNING],
+    knowledges: [technologies.tools.LINUX, technologies.tools.DOCKER, types.methods.SELF_LEARNING],
 } satisfies IIncompleteProject

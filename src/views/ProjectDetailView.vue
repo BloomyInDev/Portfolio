@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MethodsEnum, projectDateToString, projects, type TechnologyEnum } from "@/content/projects"
+import { types, projectDateToString, projects, type TechnologyEnum } from "@/content/projects"
 import { usePageHead } from "@/lib/routing"
 import ButtonComponent from "@components/ButtonComponent.vue"
 import CarousselComponent from "@components/CarousselComponent.vue"
@@ -15,6 +15,8 @@ import { computed } from "vue"
 import VueMarkdown from "vue-markdown-render"
 import { useRoute } from "vue-router"
 
+type Method = (typeof types.methods)[keyof typeof types.methods]
+
 const projectName = useRoute().params.projectName as string
 
 const projectInfo = projects.find((project) => project.id === projectName) || null
@@ -26,16 +28,14 @@ const projectTechnologies = computed<TechnologyEnum[]>(() =>
     projectInfo === null
         ? []
         : projectInfo.knowledges.filter(
-              (t): t is TechnologyEnum => !Object.values(MethodsEnum).includes(t as MethodsEnum),
+              (t): t is TechnologyEnum => !Object.values(types.methods).includes(t as Method),
           ),
 )
 const projectMethods = computed<string>(() =>
     projectInfo === null
         ? "Aucune méthode spécifique n'a été utilisée."
         : projectInfo.knowledges
-              .filter((t): t is MethodsEnum =>
-                  Object.values(MethodsEnum).includes(t as MethodsEnum),
-              )
+              .filter((t): t is Method => Object.values(types.methods).includes(t as Method))
               .join(", "),
 )
 

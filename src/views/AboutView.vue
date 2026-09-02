@@ -6,14 +6,7 @@ import TechnologiesComponent from "@components/TechnologiesComponent.vue"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { faGitAlt, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelope, faFilePdf } from "@fortawesome/free-solid-svg-icons"
-import {
-    DatabasesEnum,
-    FrameworksEnum,
-    LanguagesEnum,
-    ToolsEnum,
-    projects,
-    type TechnologyEnum,
-} from "@/content/projects"
+import { technologies, projects, type TechnologyEnum } from "@/content/projects"
 import meImage from "@assets/me.png"
 
 usePageHead()
@@ -26,21 +19,19 @@ const usedTechnologies = new Set(projects.flatMap((project) => project.knowledge
 
 // Compétences groupées par catégorie, en ne gardant que celles utilisées.
 const skillCategories = [
-    { label: "Langages", values: Object.values(LanguagesEnum) },
-    { label: "Frameworks & bibliothèques", values: Object.values(FrameworksEnum) },
-    { label: "Bases de données", values: Object.values(DatabasesEnum) },
-    { label: "Outils", values: Object.values(ToolsEnum) },
+    { label: "Langages", values: Object.values(technologies.languages) },
+    { label: "Frameworks & bibliothèques", values: Object.values(technologies.frameworks) },
+    { label: "Bases de données", values: Object.values(technologies.databases) },
+    { label: "Outils", values: Object.values(technologies.tools) },
 ]
     .map((category) => ({
         label: category.label,
-        items: category.values.filter((value) =>
-            usedTechnologies.has(value),
-        ) as TechnologyEnum[],
+        items: category.values.filter((value) => usedTechnologies.has(value)) as TechnologyEnum[],
     }))
     .filter((category) => category.items.length > 0)
 
 const totalTechnologies = skillCategories.reduce((sum, category) => sum + category.items.length, 0)
-const languagesCount = Object.values(LanguagesEnum).filter((value) =>
+const languagesCount = Object.values(technologies.languages).filter((value) =>
     usedTechnologies.has(value),
 ).length
 

@@ -1,16 +1,21 @@
 import type { TechnologyEnum } from "./technologies"
 
-export enum MethodsEnum {
+enum MethodsEnum {
     AGILE = "Agile",
     OOP = "OOP",
     UML = "UML",
     SELF_LEARNING = "Self-learning",
 }
 
-export enum ProjectTypeEnum {
+enum ProjectTypeEnum {
     PERSONAL = "Personal",
     ACADEMIC = "Academic",
     PROFESSIONAL = "Professional",
+}
+
+export default {
+    methods: MethodsEnum,
+    projectTypes: ProjectTypeEnum,
 }
 
 export type IProjectDate = {

@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Portfolio personnel",
@@ -19,14 +20,14 @@ export default {
     dates: {
         start: createDate({ month: MonthEnum.September, year: 2025 }),
     },
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     knowledges: [
-        LanguagesEnum.HTML,
-        LanguagesEnum.CSS,
-        LanguagesEnum.JAVASCRIPT,
-        FrameworksEnum.VUEJS,
-        ToolsEnum.GIT,
-        ToolsEnum.GITHUB,
+        technologies.languages.HTML,
+        technologies.languages.CSS,
+        technologies.languages.JAVASCRIPT,
+        technologies.frameworks.VUEJS,
+        technologies.tools.GIT,
+        technologies.tools.GITHUB,
     ],
     projectUrl: "https://bastienluben.dev",
 } satisfies IIncompleteProject

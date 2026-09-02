@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { DatabasesEnum, FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Debug everything",
@@ -51,12 +52,12 @@ export default {
         "![Alt text](/favicon.png)",
     ],
     dates: { start: createDate({ month: MonthEnum.January, year: 2020 }) },
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     newFormat: true,
     knowledges: [
-        ...Object.values(LanguagesEnum),
-        ...Object.values(FrameworksEnum),
-        ...Object.values(DatabasesEnum),
-        ...Object.values(ToolsEnum),
+        ...Object.values(technologies.languages),
+        ...Object.values(technologies.frameworks),
+        ...Object.values(technologies.databases),
+        ...Object.values(technologies.tools),
     ],
 } satisfies IIncompleteProject

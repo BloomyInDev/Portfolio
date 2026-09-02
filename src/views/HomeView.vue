@@ -4,10 +4,7 @@ import ButtonComponent from "@components/ButtonComponent.vue"
 import GlassCard from "@components/GlassCard.vue"
 import TechnologiesComponent from "@components/TechnologiesComponent.vue"
 import {
-    DatabasesEnum,
-    FrameworksEnum,
-    LanguagesEnum,
-    ToolsEnum,
+    technologies,
     projects,
     projectDateToString,
     type TechnologyEnum,
@@ -33,16 +30,16 @@ const scrollToContent = () => {
 }
 
 // Technologies mises en avant sur l'accueil (choix manuel, à ajuster librement).
-const technologies: TechnologyEnum[] = [
-    LanguagesEnum.TYPESCRIPT,
-    FrameworksEnum.VUEJS,
-    LanguagesEnum.PHP,
-    LanguagesEnum.JAVA,
-    LanguagesEnum.GOLANG,
-    LanguagesEnum.SQL,
-    ToolsEnum.DOCKER,
-    ToolsEnum.GIT,
-    ToolsEnum.LINUX,
+const highlightedTechnologies: TechnologyEnum[] = [
+    technologies.languages.TYPESCRIPT,
+    technologies.frameworks.VUEJS,
+    technologies.languages.PHP,
+    technologies.languages.JAVA,
+    technologies.languages.GOLANG,
+    technologies.languages.SQL,
+    technologies.tools.DOCKER,
+    technologies.tools.GIT,
+    technologies.tools.LINUX,
 ]
 
 const featured = projects.slice(0, 3)
@@ -75,7 +72,7 @@ const featured = projects.slice(0, 3)
             <h2>Technologies utilisées</h2>
             <div class="tech-grid">
                 <TechnologiesComponent
-                    v-for="tech in technologies"
+                    v-for="tech in highlightedTechnologies"
                     :key="tech"
                     :technology="tech"
                 />

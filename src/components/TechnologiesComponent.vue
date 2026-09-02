@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-    DatabasesEnum,
-    FrameworksEnum,
-    LanguagesEnum,
-    ToolsEnum,
-    type TechnologyEnum,
-} from "@/content/projects"
+import { technologies, type TechnologyEnum } from "@/content/projects"
 import { computed } from "vue"
 
 const icons = import.meta.glob("@/assets/technologies/**/*", {
@@ -43,72 +37,72 @@ const makeIconConfig = (
 
 const iconConfig = computed((): IconConfig => {
     switch (props.technology) {
-        case LanguagesEnum.HTML:
+        case technologies.languages.HTML:
             return makeIconConfig("html.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.CSS:
+        case technologies.languages.CSS:
             return makeIconConfig("css.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.JAVASCRIPT:
+        case technologies.languages.JAVASCRIPT:
             return makeIconConfig("javascript.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.TYPESCRIPT:
+        case technologies.languages.TYPESCRIPT:
             return makeIconConfig("typescript.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.PHP:
+        case technologies.languages.PHP:
             return makeIconConfig("php.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.JAVA:
+        case technologies.languages.JAVA:
             return makeIconConfig("java.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.PYTHON:
+        case technologies.languages.PYTHON:
             return makeIconConfig("python.svg")
-        case LanguagesEnum.GOLANG:
+        case technologies.languages.GOLANG:
             return makeIconConfig("go.svg")
-        case LanguagesEnum.C:
+        case technologies.languages.C:
             return makeIconConfig("c.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case LanguagesEnum.SQL:
+        case technologies.languages.SQL:
             return makeIconConfig("sql.png")
-        case FrameworksEnum.VUEJS:
+        case technologies.frameworks.VUEJS:
             return makeIconConfig("vuejs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case FrameworksEnum.NESTJS:
+        case technologies.frameworks.NESTJS:
             return makeIconConfig("nestjs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case FrameworksEnum.JAVAFX:
+        case technologies.frameworks.JAVAFX:
             return makeIconConfig("javafx.png", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case FrameworksEnum.LIBGDX:
+        case technologies.frameworks.LIBGDX:
             return makeIconConfig("libgdx.png")
-        case FrameworksEnum.ASTRO:
+        case technologies.frameworks.ASTRO:
             return makeIconConfig("astro.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case FrameworksEnum.SVELTE:
+        case technologies.frameworks.SVELTE:
             return makeIconConfig("svelte.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case FrameworksEnum.TAILWINDCSS:
+        case technologies.frameworks.TAILWINDCSS:
             return makeIconConfig("tailwindcss.svg", {
                 shadowOpacity: DEFAULT_SHADOW_OPACITY,
                 forceSquare: true,
             })
-        case FrameworksEnum.BOOTSTRAP:
+        case technologies.frameworks.BOOTSTRAP:
             return makeIconConfig("bootstrap.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case DatabasesEnum.POSTGRESQL:
+        case technologies.databases.POSTGRESQL:
             return makeIconConfig("postgresql.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case DatabasesEnum.MARIADB:
+        case technologies.databases.MARIADB:
             return makeIconConfig("mariadb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case DatabasesEnum.MONGODB:
+        case technologies.databases.MONGODB:
             return makeIconConfig("mongodb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case DatabasesEnum.ORACLEDB:
+        case technologies.databases.ORACLEDB:
             return makeIconConfig("oracle.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case DatabasesEnum.SQLITE:
+        case technologies.databases.SQLITE:
             return makeIconConfig("sqlite.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case ToolsEnum.LINUX:
+        case technologies.tools.LINUX:
             return makeIconConfig("linux.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case ToolsEnum.GIT:
+        case technologies.tools.GIT:
             return makeIconConfig("git.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case ToolsEnum.GITHUB:
+        case technologies.tools.GITHUB:
             return makeIconConfig("github.svg")
-        case ToolsEnum.DOCKER:
+        case technologies.tools.DOCKER:
             return makeIconConfig("docker.svg")
-        case ToolsEnum.WORDPRESS:
+        case technologies.tools.WORDPRESS:
             return makeIconConfig("wordpress.svg")
-        case ToolsEnum.MONDAY:
+        case technologies.tools.MONDAY:
             return makeIconConfig("monday.png")
-        case ToolsEnum.OVH:
+        case technologies.tools.OVH:
             return makeIconConfig("ovh.png")
-        case ToolsEnum.NODEJS:
+        case technologies.tools.NODEJS:
             return makeIconConfig("nodejs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case ToolsEnum.VERCEL:
+        case technologies.tools.VERCEL:
             return makeIconConfig("vercel.svg")
         default:
             return makeIconConfig("default")

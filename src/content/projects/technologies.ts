@@ -1,4 +1,4 @@
-export enum LanguagesEnum {
+enum LanguagesEnum {
     HTML = "HTML",
     CSS = "CSS",
     JAVASCRIPT = "Javascript",
@@ -11,7 +11,7 @@ export enum LanguagesEnum {
     SQL = "SQL",
 }
 
-export enum FrameworksEnum {
+enum FrameworksEnum {
     VUEJS = "Vue.js",
     NESTJS = "NestJS",
     JAVAFX = "JavaFX", // Extension de Java pour les interfaces graphiques
@@ -22,7 +22,7 @@ export enum FrameworksEnum {
     BOOTSTRAP = "Bootstrap",
 }
 
-export enum DatabasesEnum {
+enum DatabasesEnum {
     POSTGRESQL = "PostgreSQL",
     MARIADB = "MariaDB",
     MONGODB = "MongoDB",
@@ -30,7 +30,7 @@ export enum DatabasesEnum {
     SQLITE = "SQLite",
 }
 
-export enum ToolsEnum {
+enum ToolsEnum {
     LINUX = "Linux",
     GIT = "Git",
     GITHUB = "Github",
@@ -43,3 +43,10 @@ export enum ToolsEnum {
 }
 
 export type TechnologyEnum = LanguagesEnum | FrameworksEnum | DatabasesEnum | ToolsEnum
+
+export default {
+    languages: LanguagesEnum,
+    frameworks: FrameworksEnum,
+    databases: DatabasesEnum,
+    tools: ToolsEnum,
+}

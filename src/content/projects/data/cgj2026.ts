@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { FrameworksEnum, LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "CodeGameJam 2026 - 10ème édition",
@@ -27,12 +28,12 @@ export default {
             .join("\n"),
     ],
     newFormat: false,
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     knowledges: [
-        LanguagesEnum.JAVA,
-        FrameworksEnum.LIBGDX,
-        ToolsEnum.GIT,
-        MethodsEnum.OOP,
+        technologies.languages.JAVA,
+        technologies.frameworks.LIBGDX,
+        technologies.tools.GIT,
+        types.methods.OOP,
     ],
     dates: {
         start: createDate({ day: 15, month: MonthEnum.January, year: 2026 }),

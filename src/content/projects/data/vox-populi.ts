@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Vox Populi",
@@ -21,15 +22,15 @@ export default {
         "Je remercie mes coéquipiers [Clément Dubois](https://rybois-dev.github.io/portfolio/src/), [Romain Dellaroli](https://dellarolir.github.io/Romain_Dellaroli.github.io/) et [Raphaël Fouqué](https://www.linkedin.com/in/raphael-fouque689/) pour ce travail de groupe réussi.",
     ],
     newFormat: false,
-    type: ProjectTypeEnum.ACADEMIC,
+    type: types.projectTypes.ACADEMIC,
     knowledges: [
-        LanguagesEnum.PHP,
-        LanguagesEnum.CSS,
-        LanguagesEnum.JAVASCRIPT,
-        LanguagesEnum.SQL,
-        ToolsEnum.GIT,
-        MethodsEnum.OOP,
-        MethodsEnum.AGILE,
+        technologies.languages.PHP,
+        technologies.languages.CSS,
+        technologies.languages.JAVASCRIPT,
+        technologies.languages.SQL,
+        technologies.tools.GIT,
+        types.methods.OOP,
+        types.methods.AGILE,
     ],
     images: [
         { title: "Page des consultations", url: "/project/vox-populi/consultations.png" },

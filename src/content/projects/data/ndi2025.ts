@@ -1,6 +1,7 @@
 import { MonthEnum, createDate } from "../date"
-import { LanguagesEnum, ToolsEnum } from "../technologies"
-import { MethodsEnum, ProjectTypeEnum, type IIncompleteProject } from "../types"
+import technologies from "../technologies"
+import types from "../types"
+import type { IIncompleteProject } from "../types"
 
 export default {
     title: "Nuit de l'Info 2025",
@@ -25,13 +26,13 @@ export default {
         // "Ce site est actuellement déployé avec Github Pages et est accessible [juste ici](https://ndi2025.bastienluben.dev). ",
     ],
     newFormat: false,
-    type: ProjectTypeEnum.PERSONAL,
+    type: types.projectTypes.PERSONAL,
     knowledges: [
-        LanguagesEnum.HTML,
-        LanguagesEnum.CSS,
-        LanguagesEnum.TYPESCRIPT,
-        ToolsEnum.GIT,
-        MethodsEnum.AGILE,
+        technologies.languages.HTML,
+        technologies.languages.CSS,
+        technologies.languages.TYPESCRIPT,
+        technologies.tools.GIT,
+        types.methods.AGILE,
     ],
     images: [
         { title: "Page d'accueil", url: "/project/ndi2025/homepage.png" },
