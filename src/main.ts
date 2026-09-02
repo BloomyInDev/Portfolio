@@ -3,6 +3,7 @@ import { ViteSSG } from "vite-ssg"
 import App from "./App.vue"
 import "./styles/main.css"
 import type { CustomRouteMetadata } from "./types"
+import { setupStaleChunkReload } from "./lib/staleChunkReload"
 import { setupViewTransitions } from "./lib/viewTransitions"
 
 export const createApp = ViteSSG(
@@ -99,7 +100,10 @@ export const createApp = ViteSSG(
         ],
     },
     (ctx) => {
-        if (!import.meta.env.SSR) setupViewTransitions(ctx.router)
+        if (!import.meta.env.SSR) {
+            setupStaleChunkReload(ctx.router)
+            setupViewTransitions(ctx.router)
+        }
     },
     {},
 )
