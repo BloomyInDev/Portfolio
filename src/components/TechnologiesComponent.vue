@@ -2,130 +2,111 @@
 import { technologies, type TechnologyEnum } from "@/content/projects"
 import { computed } from "vue"
 
+// Icons are filed by category, exactly like the enums: the folder is derived from
+// the category, never spelled out by hand.
 const icons = import.meta.glob("@/assets/technologies/**/*", {
     eager: true,
     import: "default",
 }) as Record<string, string>
-const iconsByName = Object.fromEntries(
-    Object.entries(icons).map(([path, url]) => [path.split("/").pop() as string, url]),
+const iconsByPath = Object.fromEntries(
+    Object.entries(icons).map(([path, url]) => [path.split("/").slice(-2).join("/"), url]),
 )
 
 const props = defineProps<{
     technology: TechnologyEnum
 }>()
 
-// Default drop-shadow opacity used to make an icon pop off the badge background.
-// Icons that are already high-contrast (plain white icons, or PNGs whose own
-// colors read fine) can override it to 0 right where they're mapped, since for
-// a couple of them (e.g. javafx.png) the shadow actively washes out the detail.
-const DEFAULT_SHADOW_OPACITY = 0.7
+// A drop-shadow makes the icon pop off the badge background. Already high-contrast
+// icons (plain white ones, PNGs whose own colors read fine) opt out with
+// `shadow: false`, since the shadow washes out their detail (e.g. javafx.png).
+const SHADOW_OPACITY = 0.7
 
-type IconConfig = {
-    image: string
-    shadowOpacity: number
-    forceSquare?: true
+type IconSpec = string | { file: string; shadow?: false; square?: true }
+
+type TechnologiesOf<C extends keyof typeof technologies> = Extract<
+    (typeof technologies)[C][keyof (typeof technologies)[C]],
+    string
+>
+
+// One `Record` per category: forgetting a technology is a type error.
+const iconSpecs: { [C in keyof typeof technologies]: Record<TechnologiesOf<C>, IconSpec> } = {
+    languages: {
+        [technologies.languages.HTML]: "html.svg",
+        [technologies.languages.CSS]: "css.svg",
+        [technologies.languages.JAVASCRIPT]: "javascript.svg",
+        [technologies.languages.TYPESCRIPT]: "typescript.svg",
+        [technologies.languages.PHP]: "php.svg",
+        [technologies.languages.JAVA]: "java.svg",
+        [technologies.languages.PYTHON]: { file: "python.svg", shadow: false },
+        [technologies.languages.GOLANG]: { file: "go.svg", shadow: false },
+        [technologies.languages.C]: "c.svg",
+        [technologies.languages.SQL]: { file: "sql.png", shadow: false },
+    },
+    frameworks: {
+        [technologies.frameworks.VUEJS]: "vuejs.svg",
+        [technologies.frameworks.NESTJS]: "nestjs.svg",
+        [technologies.frameworks.JAVAFX]: "javafx.png",
+        [technologies.frameworks.LIBGDX]: { file: "libgdx.png", shadow: false },
+        [technologies.frameworks.ASTRO]: "astro.svg",
+        [technologies.frameworks.SVELTE]: "svelte.svg",
+        [technologies.frameworks.TAILWINDCSS]: { file: "tailwindcss.svg", square: true },
+        [technologies.frameworks.BOOTSTRAP]: "bootstrap.svg",
+    },
+    databases: {
+        [technologies.databases.POSTGRESQL]: "postgresql.svg",
+        [technologies.databases.MARIADB]: "mariadb.svg",
+        [technologies.databases.MONGODB]: "mongodb.svg",
+        [technologies.databases.ORACLEDB]: "oracle.svg",
+        [technologies.databases.SQLITE]: "sqlite.svg",
+    },
+    tools: {
+        [technologies.tools.LINUX]: "linux.svg",
+        [technologies.tools.GIT]: "git.svg",
+        [technologies.tools.DOCKER]: { file: "docker.svg", shadow: false },
+        [technologies.tools.NODEJS]: "nodejs.svg",
+    },
+    services: {
+        [technologies.services.GITHUB]: { file: "github.svg", shadow: false },
+        [technologies.services.WORDPRESS]: { file: "wordpress.svg", shadow: false },
+        [technologies.services.MONDAY]: { file: "monday.png", shadow: false },
+        [technologies.services.OVH]: { file: "ovh.png", shadow: false },
+        [technologies.services.VERCEL]: { file: "vercel.svg", shadow: false },
+    },
 }
 
-const makeIconConfig = (
-    image: string,
-    options?: { shadowOpacity?: number; forceSquare?: true },
-): IconConfig => ({
-    image,
-    shadowOpacity: options?.shadowOpacity ?? 0,
-    ...(options?.forceSquare && { forceSquare: true }),
-})
+// Flattens the table into `technology -> path relative to the icons folder`.
+const specsByTechnology = new Map(
+    Object.entries(iconSpecs).flatMap(([category, specs]) =>
+        Object.entries(specs as Record<string, IconSpec>).map(
+            ([technology, spec]) =>
+                [
+                    technology as TechnologyEnum,
+                    typeof spec === "string"
+                        ? { file: `${category}/${spec}` }
+                        : { ...spec, file: `${category}/${spec.file}` },
+                ] as const,
+        ),
+    ),
+)
 
-const iconConfig = computed((): IconConfig => {
-    switch (props.technology) {
-        case technologies.languages.HTML:
-            return makeIconConfig("html.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.CSS:
-            return makeIconConfig("css.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.JAVASCRIPT:
-            return makeIconConfig("javascript.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.TYPESCRIPT:
-            return makeIconConfig("typescript.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.PHP:
-            return makeIconConfig("php.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.JAVA:
-            return makeIconConfig("java.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.PYTHON:
-            return makeIconConfig("python.svg")
-        case technologies.languages.GOLANG:
-            return makeIconConfig("go.svg")
-        case technologies.languages.C:
-            return makeIconConfig("c.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.languages.SQL:
-            return makeIconConfig("sql.png")
-        case technologies.frameworks.VUEJS:
-            return makeIconConfig("vuejs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.frameworks.NESTJS:
-            return makeIconConfig("nestjs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.frameworks.JAVAFX:
-            return makeIconConfig("javafx.png", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.frameworks.LIBGDX:
-            return makeIconConfig("libgdx.png")
-        case technologies.frameworks.ASTRO:
-            return makeIconConfig("astro.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.frameworks.SVELTE:
-            return makeIconConfig("svelte.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.frameworks.TAILWINDCSS:
-            return makeIconConfig("tailwindcss.svg", {
-                shadowOpacity: DEFAULT_SHADOW_OPACITY,
-                forceSquare: true,
-            })
-        case technologies.frameworks.BOOTSTRAP:
-            return makeIconConfig("bootstrap.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.databases.POSTGRESQL:
-            return makeIconConfig("postgresql.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.databases.MARIADB:
-            return makeIconConfig("mariadb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.databases.MONGODB:
-            return makeIconConfig("mongodb.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.databases.ORACLEDB:
-            return makeIconConfig("oracle.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.databases.SQLITE:
-            return makeIconConfig("sqlite.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.tools.LINUX:
-            return makeIconConfig("linux.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.tools.GIT:
-            return makeIconConfig("git.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.services.GITHUB:
-            return makeIconConfig("github.svg")
-        case technologies.tools.DOCKER:
-            return makeIconConfig("docker.svg")
-        case technologies.services.WORDPRESS:
-            return makeIconConfig("wordpress.svg")
-        case technologies.services.MONDAY:
-            return makeIconConfig("monday.png")
-        case technologies.services.OVH:
-            return makeIconConfig("ovh.png")
-        case technologies.tools.NODEJS:
-            return makeIconConfig("nodejs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.services.VERCEL:
-            return makeIconConfig("vercel.svg")
-        default:
-            return makeIconConfig("default")
-    }
-})
-
-const image = computed(() => iconConfig.value.image)
+const spec = computed(() => specsByTechnology.get(props.technology))
 
 const imageUrl = computed(() => {
-    if (image.value === "default") return undefined
-    return iconsByName[image.value]
+    const file = spec.value?.file
+    return file ? iconsByPath[file] : undefined
 })
 
-const shadowStyle = computed(() => {
-    const opacity = iconConfig.value.shadowOpacity
-    return opacity === 0 ? {} : { filter: `drop-shadow(0 0 2px rgba(0, 0, 0, ${opacity}))` }
-})
+const shadowStyle = computed(() =>
+    spec.value && spec.value.shadow !== false
+        ? { filter: `drop-shadow(0 0 2px rgba(0, 0, 0, ${SHADOW_OPACITY}))` }
+        : {},
+)
 
-const forceSquare = computed(() => iconConfig.value.forceSquare ?? false)
+const forceSquare = computed(() => spec.value?.square ?? false)
 </script>
 <template>
     <span
-        v-if="image"
+        v-if="imageUrl"
         class="icon-badge"
         :class="{ 'icon-badge--square': forceSquare }"
         :title="props.technology"
