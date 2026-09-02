@@ -27,7 +27,7 @@ export default {
         technologies.languages.JAVASCRIPT,
         technologies.frameworks.VUEJS,
         technologies.tools.GIT,
-        technologies.tools.GITHUB,
+        technologies.services.GITHUB,
     ],
     projectUrl: "https://bastienluben.dev",
 } satisfies IIncompleteProject

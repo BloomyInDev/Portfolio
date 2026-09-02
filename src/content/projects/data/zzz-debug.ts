@@ -59,5 +59,6 @@ export default {
         ...Object.values(technologies.frameworks),
         ...Object.values(technologies.databases),
         ...Object.values(technologies.tools),
+        ...Object.values(technologies.services),
     ],
 } satisfies IIncompleteProject

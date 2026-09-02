@@ -18,15 +18,20 @@ const commitUrl = computed(() => `https://github.com/BloomyInDev/Portfolio/commi
 const usedTechnologies = new Set(projects.flatMap((project) => project.knowledges))
 
 // Compétences groupées par catégorie, en ne gardant que celles utilisées.
-const skillCategories = [
-    { label: "Langages", values: Object.values(technologies.languages) },
-    { label: "Frameworks & bibliothèques", values: Object.values(technologies.frameworks) },
-    { label: "Bases de données", values: Object.values(technologies.databases) },
-    { label: "Outils", values: Object.values(technologies.tools) },
-]
-    .map((category) => ({
-        label: category.label,
-        items: category.values.filter((value) => usedTechnologies.has(value)) as TechnologyEnum[],
+const categoryLabels: Record<keyof typeof technologies, string> = {
+    languages: "Langages",
+    frameworks: "Frameworks & bibliothèques",
+    databases: "Bases de données",
+    tools: "Outils & environnements",
+    services: "Services & hébergement",
+}
+
+const skillCategories = Object.entries(categoryLabels)
+    .map(([category, label]) => ({
+        label,
+        items: Object.values(technologies[category as keyof typeof technologies]).filter((value) =>
+            usedTechnologies.has(value),
+        ) as TechnologyEnum[],
     }))
     .filter((category) => category.items.length > 0)
 

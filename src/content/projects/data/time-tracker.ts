@@ -42,7 +42,7 @@ export default {
         technologies.databases.SQLITE,
         technologies.tools.DOCKER,
         technologies.tools.GIT,
-        technologies.tools.GITHUB,
+        technologies.services.GITHUB,
         types.methods.SELF_LEARNING,
     ],
     projectUrl: "https://github.com/BloomyInDev/time-tracker",

@@ -90,19 +90,19 @@ const iconConfig = computed((): IconConfig => {
             return makeIconConfig("linux.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
         case technologies.tools.GIT:
             return makeIconConfig("git.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.tools.GITHUB:
+        case technologies.services.GITHUB:
             return makeIconConfig("github.svg")
         case technologies.tools.DOCKER:
             return makeIconConfig("docker.svg")
-        case technologies.tools.WORDPRESS:
+        case technologies.services.WORDPRESS:
             return makeIconConfig("wordpress.svg")
-        case technologies.tools.MONDAY:
+        case technologies.services.MONDAY:
             return makeIconConfig("monday.png")
-        case technologies.tools.OVH:
+        case technologies.services.OVH:
             return makeIconConfig("ovh.png")
         case technologies.tools.NODEJS:
             return makeIconConfig("nodejs.svg", { shadowOpacity: DEFAULT_SHADOW_OPACITY })
-        case technologies.tools.VERCEL:
+        case technologies.services.VERCEL:
             return makeIconConfig("vercel.svg")
         default:
             return makeIconConfig("default")

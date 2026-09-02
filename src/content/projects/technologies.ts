@@ -30,23 +30,35 @@ enum DatabasesEnum {
     SQLITE = "SQLite",
 }
 
+// Installed and run by us, locally or on our own machine.
 enum ToolsEnum {
     LINUX = "Linux",
     GIT = "Git",
-    GITHUB = "Github",
     DOCKER = "Docker",
+    NODEJS = "Node.js",
+}
+
+// Third-party platforms we host on or depend on.
+enum ServicesEnum {
+    GITHUB = "Github",
     WORDPRESS = "WordPress",
     MONDAY = "Monday.com",
     OVH = "OVH",
-    NODEJS = "Node.js",
     VERCEL = "Vercel",
 }
 
-export type TechnologyEnum = LanguagesEnum | FrameworksEnum | DatabasesEnum | ToolsEnum
+export type TechnologyEnum =
+    | LanguagesEnum
+    | FrameworksEnum
+    | DatabasesEnum
+    | ToolsEnum
+    | ServicesEnum
 
+// The keys double as the folder names under `src/assets/technologies/`.
 export default {
     languages: LanguagesEnum,
     frameworks: FrameworksEnum,
     databases: DatabasesEnum,
     tools: ToolsEnum,
+    services: ServicesEnum,
 }
