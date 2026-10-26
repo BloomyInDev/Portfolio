@@ -79,7 +79,6 @@ export default {
         onFinished: () => {
             generateSitemap({
                 hostname: "https://bastienluben.dev",
-                dynamicRoutes: projects.map((p) => `/project/${p.id}`),
                 exclude: ["/404"],
                 priority: {
                     "/": 0.8,
