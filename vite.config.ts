@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url"
-import fs from "fs/promises"
 
 import { UserConfig } from "vite"
 import { ViteSSGOptions } from "vite-ssg"
@@ -32,8 +31,6 @@ const imageOptimizerOptions: Pick<
     jpeg: { quality: 75 },
     avif: { quality: 75 },
 }
-
-const badUA = await fs.readFile("src/knownBadUA.txt", "utf-8")
 
 process.env.VITE_GIT_COMMIT_HASH = child.execSync("git rev-parse --short HEAD").toString()
 
@@ -93,11 +90,7 @@ export default {
                 },
                 readable: true,
                 generateRobotsTxt: true,
-                robots: [
-                    ...badUA.split("\n").map((ua) => ({ userAgent: ua, disallow: "/" })),
-                    { userAgent: "Googlebot", allow: "/" },
-                    { userAgent: "*", allow: "/" },
-                ],
+                robots: [{ userAgent: "*", allow: "/" }],
             })
         },
     },
