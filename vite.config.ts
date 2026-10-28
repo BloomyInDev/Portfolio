@@ -8,6 +8,7 @@ import markdown from "unplugin-vue-markdown/vite"
 import vueDevTools from "vite-plugin-vue-devtools"
 import { ViteImageOptimizer as viteImageOptimizer } from "vite-plugin-image-optimizer"
 import convertToWebp from "./plugins/convertToWebp"
+import projectSchema from "./plugins/projectSchema"
 import stripUnpublishedProjects from "./plugins/stripUnpublishedProjects"
 import technologyIcons from "./plugins/technologyIcons"
 import webfontDownload from "vite-plugin-webfont-dl"
@@ -52,6 +53,8 @@ export default {
         vue({ include: [/\.vue$/, /\.md$/] }),
         vueDevTools(),
         technologyIcons(),
+        // Dev only: keeps schemas/project.json (editor feedback on the frontmatter) up to date
+        projectSchema(),
         convertToWebp(imageOptimizerOptions.webp),
         viteImageOptimizer(imageOptimizerOptions),
         webfontDownload(["https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"]),
