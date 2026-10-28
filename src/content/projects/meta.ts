@@ -1,7 +1,7 @@
-import { MonthEnum, createDate } from "./date"
-import technologies from "./technologies"
-import types from "./types"
-import type { ICustomDate, IProjectImages, IProjectMeta } from "./types"
+import { MonthEnum, createDate } from "./date.ts"
+import technologies from "./technologies.ts"
+import types from "./types.ts"
+import type { ICustomDate, IProjectImages, IProjectMeta } from "./types.ts"
 
 /**
  * Frontmatter is plain JSON/YAML, so enums arrive as their display strings

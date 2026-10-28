@@ -1,4 +1,4 @@
-import type { ICustomDate, IProjectDate } from "./types"
+import type { ICustomDate, IProjectDate } from "./types.ts"
 
 export enum MonthEnum {
     January,

@@ -1,5 +1,5 @@
 import type { Component } from "vue"
-import type { TechnologyEnum } from "./technologies"
+import type { TechnologyEnum } from "./technologies.ts"
 
 enum MethodsEnum {
     AGILE = "Agile",

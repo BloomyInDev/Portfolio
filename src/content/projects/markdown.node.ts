@@ -1,8 +1,8 @@
 import { readdirSync, readFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 import matter from "gray-matter"
-import { parseProjectMeta } from "./meta"
-import type { IProjectMeta } from "./types"
+import { parseProjectMeta } from "./meta.ts"
+import type { IProjectMeta } from "./types.ts"
 
 const dataDir = fileURLToPath(new URL("./data/", import.meta.url))
 

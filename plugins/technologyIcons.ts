@@ -1,8 +1,8 @@
 import { fileURLToPath, URL } from "node:url"
 import { PluginOption } from "vite"
 
-import { projects } from "../src/content/projects/node"
-import { iconsByTechnology } from "../src/content/projects/icons"
+import { projects } from "../src/content/projects/node.ts"
+import { iconsByTechnology } from "../src/content/projects/icons.ts"
 
 const MODULE_ID = "virtual:technology-icons"
 const RESOLVED_ID = "\0" + MODULE_ID

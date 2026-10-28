@@ -1,7 +1,7 @@
 // Single table mapping every technology to its icon. It lives here rather than in
 // the component because vite.config.ts reads it too, to bundle only the icons of
 // actually published projects (see plugins/technologyIcons).
-import technologies, { type TechnologyEnum } from "./technologies"
+import technologies, { type TechnologyEnum } from "./technologies.ts"
 
 // A drop-shadow makes the icon pop off the badge background. Already high-contrast
 // icons (plain white ones, PNGs whose own colors read fine) opt out with

@@ -1,6 +1,6 @@
 import type { Component } from "vue"
-import { projectNameToId } from "./slug"
-import type { IProject, IProjectMeta } from "./types"
+import { projectNameToId } from "./slug.ts"
+import type { IProject, IProjectMeta } from "./types.ts"
 
 // `import.meta.env` is untyped here: this module is also loaded from vite.config.ts
 // (Node context, no vite/client types), where `import.meta.env` is undefined at runtime.
