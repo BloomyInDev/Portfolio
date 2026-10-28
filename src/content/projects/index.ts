@@ -4,8 +4,8 @@ export { projectNameToId } from "./slug"
 export { default as types } from "./types"
 export {
     type ICustomDate,
-    type IIncompleteProject,
     type IProject,
+    type IProjectMeta,
     type IProjectDate,
     type IProjectImages,
 } from "./types"

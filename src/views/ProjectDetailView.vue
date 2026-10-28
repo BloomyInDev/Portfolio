@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { computed } from "vue"
-import VueMarkdown from "vue-markdown-render"
 import { useRoute } from "vue-router"
 
 type Method = (typeof types.methods)[keyof typeof types.methods]
@@ -81,11 +80,9 @@ usePageHead({
                     <p>{{ projectMethods }}</p>
                 </div>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
-                <VueMarkdown
-                    :source="projectInfo.description"
-                    id="markdown"
-                    :options="{ breaks: true }"
-                />
+                <div v-if="projectInfo.body" id="markdown">
+                    <component :is="projectInfo.body" />
+                </div>
                 <CarousselComponent
                     v-if="projectInfo.images && projectInfo.images.length > 1"
                     :images="projectInfo.images"
