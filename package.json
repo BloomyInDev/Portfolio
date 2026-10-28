@@ -24,7 +24,7 @@
         "@fortawesome/vue-fontawesome": "^3.3.3",
         "@unhead/vue": "^3.4.0",
         "vue": "^3.5.42",
-        "vue-markdown-render": "^2.3.1",
+        "vue-markdown-render": "^3.0.0",
         "vue-router": "^5.3.0"
     },
     "devDependencies": {
