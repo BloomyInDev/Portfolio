@@ -55,12 +55,12 @@ const featured = projects.slice(0, 3)
                 propres serveurs.
             </p>
             <div class="buttons">
-                <ButtonComponent>
-                    <RouterLink to="/projects">Voir mes projets</RouterLink>
-                </ButtonComponent>
-                <ButtonComponent>
-                    <RouterLink to="/about">À propos</RouterLink>
-                </ButtonComponent>
+                <RouterLink to="/projects"
+                    ><ButtonComponent>Voir mes projets</ButtonComponent></RouterLink
+                >
+                <RouterLink to="/about">
+                    <ButtonComponent>À propos</ButtonComponent>
+                </RouterLink>
             </div>
 
             <button class="scroll-cue" @click="scrollToContent" aria-label="Découvrir la suite">
