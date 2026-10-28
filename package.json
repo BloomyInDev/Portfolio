@@ -8,13 +8,15 @@
         "node": "^20.19.0 || >=22.12.0"
     },
     "scripts": {
+        "predev": "pnpm run schema",
         "dev": "vite",
         "build": "pnpm run type-check && pnpm run build-only",
         "preview": "vite preview",
         "build-only": "vite-ssg build",
         "type-check": "vue-tsc --build",
         "lint": "eslint . --fix --cache",
-        "format": "prettier --write src/"
+        "format": "prettier --write src/",
+        "schema": "node --experimental-transform-types --disable-warning=ExperimentalWarning tools/generateProjectSchema.ts"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^7.3.1",
