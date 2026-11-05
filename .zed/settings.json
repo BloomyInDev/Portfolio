@@ -1,0 +1,15 @@
+// Editor feedback on the frontmatter of the project pages, from the "Frontmatter Schema" Zed
+// extension (https://git.red.bloomyindev.me/bastien/zed-frontmatter-schema). The schema is
+// generated and not committed: `pnpm dev` keeps it up to date, or run
+// `pnpm run generate:schema`.
+{
+    "lsp": {
+        "frontmatter-schema": {
+            "settings": {
+                "schemas": {
+                    "./schemas/project.json": ["src/content/projects/data/*.md"]
+                }
+            }
+        }
+    }
+}

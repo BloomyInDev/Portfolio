@@ -1,10 +1,23 @@
 import path from "node:path"
 import { PluginOption } from "vite"
 
-// Replaces the content of unpublished project data files with a minimal stub during
-// production builds, so their real title/description/knowledges never reach the
-// client bundle. Detection is a simple text match on `published: false` since these
-// files are plain object literals authored by hand.
+// A valid minimal project: the loaders still parse every file before filtering out the
+// unpublished ones, so the stub has to pass validation.
+const STUB = `---
+title: Unpublished
+subtitle: Unpublished
+published: false
+type: Personal
+dates:
+  start: 01/1970
+knowledges: []
+---
+`
+
+// Replaces the content of unpublished project files with a minimal stub during
+// production builds, so their real title/text/knowledges never reach the client bundle.
+// Only the frontmatter is inspected, so a "published: false" in the body is ignored.
+// Must be listed before the markdown plugin, which compiles the frontmatter away.
 const plugin: () => PluginOption = () => ({
     name: "strip-unpublished-projects",
     apply: "build",
@@ -12,15 +25,13 @@ const plugin: () => PluginOption = () => ({
 
     transform(code, id) {
         const cleanId = id.split("?")[0]
-        if (!/[/\\]content[/\\]projects[/\\]data[/\\]/.test(cleanId)) return
-        if (path.basename(cleanId) === "index.ts") return
-        if (!/published\s*:\s*false\b/.test(code)) return
+        if (!/[/\\]content[/\\]projects[/\\]data[/\\][^/\\]+\.md$/.test(cleanId)) return
+
+        const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---/.exec(code)?.[1] ?? ""
+        if (!/^published:\s*false\s*$/m.test(frontmatter)) return
 
         this.info(`✂ ${path.basename(cleanId)} stripped from build (unpublished)`)
-        return {
-            code: "export default { published: false, dates: { start: { date: new Date(0) } } }\n",
-            map: null,
-        }
+        return { code: STUB, map: null }
     },
 })
 

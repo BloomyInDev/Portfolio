@@ -12,8 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import { computed } from "vue"
-import VueMarkdown from "vue-markdown-render"
 import { useRoute } from "vue-router"
+import "@/styles/markdown.css"
 
 type Method = (typeof types.methods)[keyof typeof types.methods]
 
@@ -81,11 +81,9 @@ usePageHead({
                     <p>{{ projectMethods }}</p>
                 </div>
                 <p><FontAwesomeIcon :icon="faCalendar" /> {{ projectDate }}</p>
-                <VueMarkdown
-                    :source="projectInfo.description"
-                    id="markdown"
-                    :options="{ breaks: true }"
-                />
+                <div v-if="projectInfo.body" id="markdown">
+                    <component :is="projectInfo.body" />
+                </div>
                 <CarousselComponent
                     v-if="projectInfo.images && projectInfo.images.length > 1"
                     :images="projectInfo.images"
@@ -173,29 +171,5 @@ div#content {
     width: 100%;
     display: block;
     object-fit: cover;
-}
-
-#markdown {
-    line-height: 1.7;
-}
-
-#markdown :deep(a) {
-    color: white;
-    text-decoration: none;
-    border-bottom: 1px solid white;
-    background-image: linear-gradient(#00bbdc, #00bbdc);
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 2px;
-    transition: background-size 400ms ease-in-out;
-}
-
-#markdown :deep(a):hover {
-    background-size: 100% 2px;
-}
-
-#markdown :deep(a::after) {
-    content: " ↗";
-    font-size: 0.75em;
 }
 </style>

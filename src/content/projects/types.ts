@@ -1,4 +1,5 @@
-import type { TechnologyEnum } from "./technologies"
+import type { Component } from "vue"
+import type { TechnologyEnum } from "./technologies.ts"
 
 enum MethodsEnum {
     AGILE = "Agile",
@@ -34,8 +35,8 @@ export type IProject = {
     title: string
     /** Project subtitle */
     subtitle: string
-    /** Project description */
-    description: string
+    /** Compiled markdown body. Absent when loaded in Node (vite.config.ts only needs metadata) */
+    body?: Component
     /** Url to the project */
     projectUrl?: string
     /** Images associated with the project */
@@ -46,17 +47,12 @@ export type IProject = {
     dates: IProjectDate
     /** Type of the project */
     type: ProjectTypeEnum
-    /** Old format or new format */
-    newFormat: boolean
     /**  Is published ? */
     published: boolean
 }
 
-export type IIncompleteProject = Omit<IProject, "id" | "dates" | "images" | "description"> & {
-    dates: Omit<IProjectDate, "toString">
-    images?: IProjectImages
-    description: string | string[]
-}
+/** What a project's frontmatter describes: everything except what is derived or compiled. */
+export type IProjectMeta = Omit<IProject, "id" | "body">
 
 export type ICustomDate = {
     definedDay: boolean

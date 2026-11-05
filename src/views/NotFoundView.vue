@@ -12,9 +12,9 @@ usePageHead()
         <h3>Tu es perdu, viens retourne sur la bonne route</h3>
         <img id="compass" src="@/assets/compass.gif" alt="Boussole Minecraft" />
         <p>
-            <ButtonComponent>
-                <RouterLink to="/">Retourner à l'accueil</RouterLink>
-            </ButtonComponent>
+            <RouterLink to="/">
+                <ButtonComponent>Retourner à l'accueil</ButtonComponent>
+            </RouterLink>
         </p>
     </section>
 </template>

@@ -4,17 +4,19 @@ import { UserConfig } from "vite"
 import { ViteSSGOptions } from "vite-ssg"
 import generateSitemap from "vite-ssg-sitemap"
 import vue from "@vitejs/plugin-vue"
+import markdown from "unplugin-vue-markdown/vite"
 import vueDevTools from "vite-plugin-vue-devtools"
 import { ViteImageOptimizer as viteImageOptimizer } from "vite-plugin-image-optimizer"
-import convertToWebp from "./plugins/convertToWebp"
-import stripUnpublishedProjects from "./plugins/stripUnpublishedProjects"
-import technologyIcons from "./plugins/technologyIcons"
+import convertToWebp from "./plugins/convertToWebp.ts"
+import projectSchema from "./plugins/projectSchema.ts"
+import stripUnpublishedProjects from "./plugins/stripUnpublishedProjects.ts"
+import technologyIcons from "./plugins/technologyIcons.ts"
 import webfontDownload from "vite-plugin-webfont-dl"
 import { compression, defineAlgorithm } from "vite-plugin-compression2"
 import zlib from "zlib"
 
-import { projects } from "./src/content/projects"
-import type { CustomRouteMetadata } from "./src/types"
+import { projects } from "./src/content/projects/node.ts"
+import type { CustomRouteMetadata } from "./src/types.ts"
 import type { RouteRecordRaw } from "vue-router"
 
 import * as child from "child_process"
@@ -44,10 +46,15 @@ export default {
         cssTarget: ["safari15", "ios15", "chrome120", "firefox120", "edge120"],
     },
     plugins: [
-        vue(),
-        vueDevTools(),
+        // Before the markdown plugin: it needs the raw frontmatter
         stripUnpublishedProjects(),
+        // Compiles `src/content/projects/data/*.md` to components; must run before the vue plugin
+        markdown({ markdownOptions: { breaks: true, typographer: false, linkify: false } }),
+        vue({ include: [/\.vue$/, /\.md$/] }),
+        vueDevTools(),
         technologyIcons(),
+        // Dev only: keeps schemas/project.json (editor feedback on the frontmatter) up to date
+        projectSchema(),
         convertToWebp(imageOptimizerOptions.webp),
         viteImageOptimizer(imageOptimizerOptions),
         webfontDownload(["https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"]),
