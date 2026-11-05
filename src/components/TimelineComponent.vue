@@ -92,12 +92,27 @@ const numberOfItems = computed(() => props.items.length)
 .bubble {
     width: 1.1rem;
     height: 1.1rem;
-    background: var(--cyan-300);
-    border: 2px solid #ffffff;
-    box-shadow: 0 0 0 4px rgba(0, 18, 51, 0.4);
-    border-radius: 50%;
     position: relative;
     transition: transform 250ms var(--ease);
+}
+
+/* The dot, its 2px white border and its 4px dark ring, painted as one radial gradient
+   that overflows the box by the ring's width. A rounded border + box-shadow would look
+   the same, but Firefox draws those in tiles, and scaling them on hover shows the tile
+   seams as a cross through the dot. */
+.bubble::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(
+        circle closest-side,
+        var(--cyan-300) calc(100% - 6.5px),
+        #ffffff calc(100% - 5.5px),
+        #ffffff calc(100% - 4.5px),
+        rgba(0, 18, 51, 0.4) calc(100% - 3.5px),
+        rgba(0, 18, 51, 0.4) calc(100% - 0.5px),
+        transparent 100%
+    );
 }
 
 /* Base offset centers the dot on the bar: the container edge sits flush with
