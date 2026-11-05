@@ -52,3 +52,25 @@ Règle horizontale au-dessus et en dessous :
 Une image :
 
 ![Alt text](/favicon.png)
+
+## Évolution
+
+<div class="revisions">
+
+<details>
+<summary><time>03/2025 à 11/2026</time> Version intermédiaire</summary>
+
+Ancien texte avec une liste :
+- `ronflex`, machine principale
+- Un [lien](../vox-populi)
+
+</details>
+
+<details>
+<summary><time>12/2024 à 03/2025</time> Première version</summary>
+
+Le tout premier texte de la page.
+
+</details>
+
+</div>
